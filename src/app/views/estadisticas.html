@@ -1,0 +1,155 @@
+<!-- Encabezado -->
+<div class=" page-header header-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-offset-2 text-center">
+                <h3 class="hestia-title ">{{titulo}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="header-filter" style="background-image: url(../../assets/header.jpg);"></div>
+</div>
+
+<div class="container">
+    <!-- Apartado de filtrado -->
+    <div class="row filtrado">
+        <div class="col-sm-12 col-lg-3">
+            <span class="description-filtros">Periodo de tiempo</span>
+            <mat-form-field appearance="outline">
+                <mat-select [disabled]="especializadaCheck" placeholder="Seleccione" id="tipo_filtro" name="tipo_filtro"  [(ngModel)]="filtrado.periodo" #tipo_filtro="ngModel">
+                    <mat-option *ngFor="let periodo of periodos.result" [value]="periodo.id"> {{periodo.timeFrame1}}</mat-option>
+                    <!-- <mat-option value="Week">Semana</mat-option>
+                    <mat-option value="Month">Mes</mat-option>
+                    <mat-option value="Year">Año</mat-option>
+                    <mat-option value="All">Todos los tiempos</mat-option> -->
+                </mat-select>
+            </mat-form-field>   
+        </div>
+        <div class="col-sm-12 col-lg-3">
+            <div class="description-filtros mt-5">
+                <mat-checkbox id="especializada" name="especializada" [(ngModel)]="especializadaCheck" #especializada="ngModel">Búsqueda avanzada</mat-checkbox>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-3">
+            <span class="description-filtros">Fecha inicial (Consulta)</span>
+            <mat-form-field appearance="outline">
+                <input matInput [matDatepicker]="picker1" 
+                placeholder="DD/MM/YYYY" 
+                [disabled]="!especializadaCheck"
+                id="fechaInicio" name="fechaInicio" [(ngModel)]="filtrado.fecha_incio" #fechaInicio="ngModel">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-sm-12 col-lg-3">
+            <span class="description-filtros">Fecha final (Consulta)</span>
+            <mat-form-field appearance="outline">
+                <input matInput [matDatepicker]="picker2" 
+                placeholder="DD/MM/YYYY" 
+                [disabled]="!especializadaCheck"
+                id="fechaFinal" name="fechaFinal" [(ngModel)]="especial_fecha_actual" #fechaFinal="ngModel">
+                <mat-datepicker-toggle matSuffix [for]="picker2" ></mat-datepicker-toggle>
+                <mat-datepicker #picker2 ></mat-datepicker>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 ">
+        </div>
+        <div class="col-sm-12 col-lg-6 mb-5 text-right">
+            <button mat-button class="btn btn-success boton-verde" (click)="filtrar()" >Buscar</button>
+        </div>
+    </div>
+
+    <!-- Recuadros de estadisticos -->
+    <div class="row"  #content id="content">
+        <div class="col-sm-12 col-lg-4 text-center">
+            <div class="card revisiones">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.result.revision}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos en revisión</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card combrobados">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.result.comprobados}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos comprobados</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card asignados">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.result.asignados}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos asignados</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <div class="card proceso">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.result.proceso}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos en proceso</h4>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-sm-12 col-lg-4">
+            <div class="card cerrados">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.result.finalizado}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos cerrados</h4>
+                </div>
+            </div>
+        </div> -->
+        <div class="col-sm-12 col-lg-4">
+            <div class="card totales">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.result.finalizado}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos finalizados</h4>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-sm-12 col-lg-4 text-center">
+            <div class="card revisiones">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.abandonado}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos abandonados</h4>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="col-sm-12 col-lg-4">
+            <div class="card combrobados">
+                <div class="numero-casos">
+                    <h1 class="font-estadisticas">{{estadisticas.todos}}</h1>
+                </div>
+                <div class="titulo-casos text-center">
+                    <h4 class="font-footer-card">Casos totales</h4>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <!-- Boton y exportacion -->
+    <div class="row">
+        <div class="col-12 mt-5 mb-5 text-right">
+            <button class="btn btn-success boton-verde" (click)="imprimirPDF()" mat-button>Imprimir reporte</button>
+            <!-- <button class="btn btn-success boton-verde" (click)="exportPdf()" mat-button>Imprimir reporte</button> -->
+        </div>
+    </div>
+</div>

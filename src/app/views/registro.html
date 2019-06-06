@@ -1,0 +1,114 @@
+<div class=" page-header header-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-offset-2 text-center">
+                <h3 class="hestia-title ">{{titulo}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="header-filter" style="background-image: url(../../assets/header.jpg);"></div>
+</div>
+
+<div class="container" style="padding-top: 0;">
+    <div class="row">
+            <div class="col-6 mx-auto text-center" style="background-color: #FBFBFB; padding-top:40px;">
+                    <h3 class="titulo-delgado">LOGIN</h3>
+                    <hr class="linea-verde">
+                    <img src="../../assets/icono-logo.png" width="118" height="118">
+                    <form #formLogin="ngForm" (ngSubmit)="formLogin.valid ? userLogin() : ''" id="form-auth">
+                        <div class="col-12">
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="Email" id="mail" #mail="ngModel" name="mail" [(ngModel)]="usrLogin.mail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" class="validate required" required>
+                                <mat-error *ngIf="mail.dirty || mail.pristine || mail.errors && mail.errors.pattern">
+                                    El email no es <strong>válido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <mat-form-field>
+                                <input type="password" matInput placeholder="Contraseña" id="password" #password="ngModel" name="password" [(ngModel)]="usrLogin.password" class="validate required" required>
+                                <mat-error *ngIf="password.dirty || password.pristine">
+                                        La contraseña es <strong>requerida</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 mx-auto text-right mt-5 mb-5">
+                            <button class="btn btn-success boton-verde" mat-button >Ingresar</button>
+                            <p><a routerLink="/olvide-contrasenia">¿Olvidó la contraseña?</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+        <div class="col-6 mx-auto text-center" style="padding-top:40px;">
+            <h3 class="titulo-delgado">REGISTRO</h3>
+            <hr class="linea-verde">
+            <form #formRegister="ngForm"  id="form-auth">
+                    <div class="col-12">
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="Nombre de la organización" id="name" #name="ngModel" name="name"
+                                    [(ngModel)]="usrRegister.name" 
+                                    class="validate required" required>
+                                <!-- <mat-error *ngIf="name.dirty || name.pristine || name.errors && name.errors.pattern">
+                                    El usuario no es <strong>valido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
+                                </mat-error> -->
+                            </mat-form-field>
+                        </div>
+                <div class="col-12">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Email" id="mail" #mail="ngModel" name="mail"
+                            [(ngModel)]="usrRegister.mail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$"
+                            class="validate required" required>
+                        <mat-error *ngIf="mail.dirty || mail.pristine || mail.errors && mail.errors.pattern">
+                            El email no es <strong>válido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12">
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="Contraseña" id="password" #password="ngModel"
+                            name="password" [(ngModel)]="usrRegister.password"
+                            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                            class="validate required" required>
+                        <mat-error *ngIf="password.dirty || password.pristine">
+                                La contraseña es <strong>requerida</strong>
+                        </mat-error>
+                        <mat-error
+                            *ngIf="password.dirty || password.pristine && password.errors && password.errors.pattern">
+                            La contraseña es <strong>requerida</strong> y debe de contener 8 caracteres (1 mayúscula y 1
+                            caracter especial)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12">
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="Repetir contraseña" id="password2"
+                            #password2="ngModel" name="password2" [(ngModel)]="usrRegister.password2"
+                            class="validate required" required>
+                        <mat-error *ngIf="password2.dirty || password2.pristine">
+                            La contraseña es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="alert alert-danger" role="alert"
+                        *ngIf="password2.dirty && (password.value != password2.value)">
+                        Las contraseñas no coinciden.
+                    </div>
+                    <div class="col-12">
+                        <mat-checkbox>Acepto aviso de privacidad</mat-checkbox>
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="mensaje">
+                        {{mensaje}}
+                    </div>
+                    <!-- <div *ngIf="validar">
+                        <div class="alert alert-danger" role="alert" *ngFor="let error of errores">
+                            {{error}}
+                        </div>
+                    </div> -->
+                </div>
+                <div class="col-12 mx-auto text-right mt-5 mb-5">
+                    <button class="btn btn-success boton-verde" mat-button (click)="userRegister()">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

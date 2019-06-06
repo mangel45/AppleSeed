@@ -1,0 +1,50 @@
+<div class=" page-header header-small">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-offset-2 text-center">
+                <h3 class="hestia-title ">{{titulo}}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="header-filter" style="background-image: url(../../assets/header.jpg);"></div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 mx-auto text-center">
+            <form #formCuenta="ngForm" (ngSubmit)="formCuenta.valid ? onSubmit() : ''" id="form-auth">
+                <div class="col-12">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Email" id="mail" #mail="ngModel" name="mail" [(ngModel)]="usrChange.mail" class="validate required" required>
+                        <mat-error *ngIf="mail.dirty || mail.pristine || mail.errors && mail.errors.pattern">
+                            El usuario no es <strong>válido</strong> y <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12">
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="Contraseña nueva" id="password" #password="ngModel" name="password" [(ngModel)]="usrChange.password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" class="validate required" required>
+                        <mat-error *ngIf="password.dirty || password.pristine ">
+                            La contraseña es <strong>requerida</strong> y debe de contener 8 caracteres (1 mayúscula y 1 caracter especial)
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12">
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="Repite tu contraseña" id="confirm_pass" #confirm_pass="ngModel" name="confirm_pass" [(ngModel)]="new_password2"  class="validate required" required>
+                        <mat-error *ngIf="confirm_pass.dirty || confirm_pass.pristine ">
+                            La contraseña es <strong>requerida</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="alert alert-danger" role="alert" *ngIf="confirm_pass.dirty && (password.value != confirm_pass.value)">
+                    Las contraseñas no coinciden
+                </div>
+                <div class="col-12 mx-auto text-right mt-5 mb-5">
+                    <button class="btn btn-success boton-verde" mat-button [disabled]="!formCuenta.form.valid">Cambiar contraseña</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

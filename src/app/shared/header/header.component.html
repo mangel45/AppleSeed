@@ -1,0 +1,29 @@
+<div class="col-4 mx-auto text-center">
+  <h3 class="titulo-delgado">LOGIN</h3>
+  <hr class="linea-verde">
+  <img src="../../assets/icono-logo.png" width="118" height="118">
+  <form #formLogin="ngForm" (ngSubmit)="formLogin.valid ? userLogin() : ''" id="form-auth">
+      <div class="col-12">
+          <mat-form-field>
+              <input type="text" matInput placeholder="Usuario" id="mail" #mail="ngModel" name="mail" [(ngModel)]="usrLogin.mail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" class="validate required" required>
+              <mat-error *ngIf="mail.dirty || mail.pristine || mail.errors && mail.errors.pattern">
+                  El usuario no es <strong>válido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      
+      <div class="col-12">
+          <mat-form-field>
+              <input type="password" matInput placeholder="Contraseña" id="password" #password="ngModel" name="password" [(ngModel)]="usrLogin.password" class="validate required" required>
+              <mat-error *ngIf="password.dirty || password.pristine">
+                      La contraseña es <strong>requerida</strong>
+              </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="col-12 mx-auto text-right mt-5 mb-5">
+          <button class="btn btn-success boton-verde" mat-button >Ingresar</button>
+          <p><a routerLink="/olvide-contrasenia">¿Olvidó la contraseña?</a>
+          </p>
+      </div>
+  </form>
+</div>
