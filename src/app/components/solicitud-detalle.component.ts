@@ -537,7 +537,7 @@ export class DialogInforme {
       note: this.nota_clearing,
       createby: "5C620AA5-68BF-4E24-A913-3417DA62C07B"
     }).subscribe((note) => {
-      console.log(note);
+      //console.log(note);
       this._datosService.service_general_params_get("clearing/GetByIdApplication/", { id_application: this.clearing.solicitud.idApplication }).subscribe((notas) => {
         console.log(notas.result);
         this.data.notas = notas.result;
