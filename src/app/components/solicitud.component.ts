@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { Clearing } from '../models/clearing';
+import { IdApplicationNavigation, CompanyOsc, CompanyComment, CompanyContacto, CompanyDetail } from '../models/solicitud';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import * as jquery from 'jquery';

@@ -64,5 +64,4 @@ export class Clearing {
     public director_organizacion: string;
     public ultimo_cambio: string;
     public cambio_estatuto: string;
-    public first_time:boolean;
 }

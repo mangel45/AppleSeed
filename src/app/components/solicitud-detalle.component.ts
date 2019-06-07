@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef, Inject } from '@angular/core';
 import { DatosService } from '../services/datos.service';
 import { Clearing } from '../models/clearing';
+import { CompanyOsc } from '../models/solicitud'
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import * as jquery from 'jquery';
