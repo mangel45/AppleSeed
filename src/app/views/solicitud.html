@@ -1,1230 +1,1242 @@
 <!-- Encabezado -->
 <div class="page-header header-small">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-offset-2 text-center">
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == null">{{titulo}}</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 1">SOLICITUD EN REVISIÓN</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 2">SOLICITUD COMPROBADA</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 3">SOLICITUD EN CLEARING</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 4">SOLICITUD ASIGNADA</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 5">SOLICITUD CERRADA</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 6">SOLICITUD FINALIZADA</h3>
-                <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 7">SOLICITUD ABANDONADA</h3>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-offset-2 text-center">
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == null">{{titulo}}</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 1">SOLICITUD EN REVISIÓN</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 2">SOLICITUD COMPROBADA</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 3">SOLICITUD EN CLEARING</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 4">SOLICITUD ASIGNADA</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 5">SOLICITUD CERRADA</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 6">SOLICITUD FINALIZADA</h3>
+        <h3 class="hestia-title" *ngIf="clearing.estado_clearing == 7">SOLICITUD ABANDONADA</h3>
+      </div>
     </div>
-    <div class="header-filter" style="background-image: url(../../assets/header.jpg);"></div>
+  </div>
+  <div class="header-filter" style="background-image: url(../../assets/header.jpg);"></div>
 </div>
 
 <div class="container">
-    <!-- introduccion formulario -->
-    <div class="row" #uno id="uno">
-        <div class="col-12 text-right">
-            <span *ngIf="clearing.estado_clearing >= 5">Solicitud No. {{clearing.id}} </span>
-        </div>
+  <!-- introduccion formulario -->
+  <div class="row" #uno id="uno">
+    <div class="col-12 text-right">
+      <span *ngIf="clearing.estado_clearing >= 5">Solicitud No. {{clearing.id}} </span>
     </div>
-    <form #formClearing="ngForm"  id="form-clearing">
-        <div class="row" #dos id="dos">
-            <div class="col-12  text-justify">
-                <p class="description mt-4">
-                    <span *ngIf="clearing.estado_clearing == 1">Esta información esta en </span> 
-                    <span *ngIf="clearing.estado_clearing > 1">Esta información ya esta </span> 
-                    <span class="estados-solicitudes revision" *ngIf="clearing.estado_clearing == 1"> EN REVISIÓN </span>
-                    <span class="estados-solicitudes comprobado" *ngIf="clearing.estado_clearing == 2"> COMPROBADA </span>
-                    <span class="estados-solicitudes clearing" *ngIf="clearing.estado_clearing == 3"> EN CLEARING </span>
-                    <span class="estados-solicitudes asignado" *ngIf="clearing.estado_clearing == 4"> ASIGNADA </span>
-                    <span class="estados-solicitudes cerrado" *ngIf="clearing.estado_clearing == 5"> CERRADA</span>
-                    <span class="estados-solicitudes finalizado" *ngIf="clearing.estado_clearing == 6"> FINALIZADA </span>
-                    <span class="estados-solicitudes finalizado" *ngIf="clearing.estado_clearing == 7"> ABANDONADA </span><br>
-                    En esta primera etapa se piden los datos generales de la 
-                    organización y del caso en el que solicitan asesoría Pro Bono 
-                    México. Al rellenar el presente formulario se entienden por 
-                    aceptados los términos y condiciones, así como nuestro aviso de 
-                    privacidad de datos personales, los cuales se pueden consultar 
-                    <a href=""> aquí </a>. <br>
-                    <span  class="descripcion-verde">Los campos con * son obligatorios.</span> 
-                </p>
-            </div>
-        </div>
-        <div class="row" #tres id="tres">
-            <div class="col-12 text-right">
-                <!-- <i *ngIf="clearing.estado_clearing == 1" class="edicion fa fa-pencil fa-2x" (click)="habilitarEdicion()"></i> -->
-                <i *ngIf="clearing.estado_clearing == 1" class="edicion fa fa-pencil fa-2x" (click)="edicion = edicion ? false : true"></i>
-                <!-- <mat-checkbox id="edicion" name="edicion" [(ngModel)]="edicion" #edicion="ngModel"></mat-checkbox> -->
-            </div>
-        </div>
+  </div>
+  <form #formClearing="ngForm" id="form-clearing">
+    <div class="row" #dos id="dos">
+      <div class="col-12  text-justify">
+        <p class="description mt-4">
+          <span *ngIf="clearing.estado_clearing == 1">Esta información esta en </span>
+          <span *ngIf="clearing.estado_clearing > 1">Esta información ya esta </span>
+          <span class="estados-solicitudes revision" *ngIf="clearing.estado_clearing == 1"> EN REVISIÓN </span>
+          <span class="estados-solicitudes comprobado" *ngIf="clearing.estado_clearing == 2"> COMPROBADA </span>
+          <span class="estados-solicitudes clearing" *ngIf="clearing.estado_clearing == 3"> EN CLEARING </span>
+          <span class="estados-solicitudes asignado" *ngIf="clearing.estado_clearing == 4"> ASIGNADA </span>
+          <span class="estados-solicitudes cerrado" *ngIf="clearing.estado_clearing == 5"> CERRADA</span>
+          <span class="estados-solicitudes finalizado" *ngIf="clearing.estado_clearing == 6"> FINALIZADA </span>
+          <span class="estados-solicitudes finalizado" *ngIf="clearing.estado_clearing == 7"> ABANDONADA </span><br>
+          En esta primera etapa se piden los datos generales de la
+          organización y del caso en el que solicitan asesoría Pro Bono
+          México. Al rellenar el presente formulario se entienden por
+          aceptados los términos y condiciones, así como nuestro aviso de
+          privacidad de datos personales, los cuales se pueden consultar
+          <a href=""> aquí </a>. <br>
+          <span class="descripcion-verde">Los campos con * son obligatorios.</span>
+        </p>
+      </div>
+    </div>
+    <div class="row" #tres id="tres">
+      <div class="col-12 text-right">
+        <!-- <i *ngIf="clearing.estado_clearing == 1" class="edicion fa fa-pencil fa-2x" (click)="habilitarEdicion()"></i> -->
+        <i *ngIf="clearing.estado_clearing == 1" class="edicion fa fa-pencil fa-2x" (click)="edicion = edicion ? false : true"></i>
+        <!-- <mat-checkbox id="edicion" name="edicion" [(ngModel)]="edicion" #edicion="ngModel"></mat-checkbox> -->
+      </div>
+    </div>
 
-        <!-- Datos generales -->
-        <mat-accordion #cuatro id="cuatro">
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Datos generales</h4></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel1">
-                    <div class="row"> 
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input type="text" [disabled]="!edicion" matInput placeholder="Nombre de la organización" id="nombre_osc" #nombre_osc="ngModel" name="nombre_osc" [(ngModel)]="clearing.nombre_osc" class="validate required" required>
-                                <mat-error *ngIf="nombre_osc.dirty || nombre_osc.pristine || nombre_osc.errors">
-                                    El nombre de la organización es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion"  matInput [matDatepicker]="picker3" placeholder="Fecha de solicitud" id="fecha_solicitud" #fecha_solicitud="ngModel" name="fecha_solicitud" [(ngModel)]="clearing.fecha_solicitud" class="validate required" required>
-                                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-                                <mat-datepicker #picker3></mat-datepicker>
-                                <mat-error *ngIf="fecha_solicitud.dirty || fecha_solicitud.pristine || fecha_solicitud.errors">
-                                    La fecha de solicitud es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput placeholder="Descripción del caso del que solicita asesoría pro bono" id="descripcion_caso" #descripcion_caso="ngModel" name="descripcion_caso" [(ngModel)]="clearing.descripcion_caso" class="validate required" required></textarea>
-                                <mat-error *ngIf="descripcion_caso.dirty || descripcion_caso.pristine || descripcion_caso.errors">
-                                    La descripción del caso es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>  
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-        
-        <div>
-            <div class="col-12 text-center">
-                <span> <h4 class="textos-verdes titulo-medio md-5">¿Es la primera vez que llenas este formulario?</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
-                <mat-radio-group>
-                    <mat-radio-button value="true" [(ngModel)]="clearing.first_time">Sí</mat-radio-button>
-                    <mat-radio-button value="false" [(ngModel)]="clearing.first_time">No</mat-radio-button>
-                  </mat-radio-group>
-            </div>
-            <br>
-        </div>
-        
-        <!-- Datos de la OSC -->
-        <mat-accordion *ngIf="clearing.first">
-            <mat-expansion-panel [expanded]="false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Datos de la OSC</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel2">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <p class="description">
-                                Estos datos son importantes para tener un contacto eficiente 
-                                con las organizaciones con las que trabajamos
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="email" matInput placeholder="Email" id="email_osc" #email_osc="ngModel" name="email_osc" [(ngModel)]="clearing.email_osc" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" class="validate required" required>
-                                <mat-error *ngIf="email_osc.dirty || email_osc.pristine || email_osc.errors && email_osc.errors.pattern">
-                                    El email no es <strong>valido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="url" matInput placeholder="Sitio web de la OSC" id="sitio_web_osc" #sitio_web_osc="ngModel" name="sitio_web_osc" [(ngModel)]="clearing.sitio_web_osc" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" class="validate required" required>
-                                <mat-error *ngIf="sitio_web_osc.dirty || sitio_web_osc.pristine || sitio_web_osc.errors && sitio_web_osc.errors.pattern">
-                                    El sitio web no es <strong>valido</strong> (ej. http://www.ejemplo.com) y <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput [textMask]="{mask: mask_telefono, guide: false}" placeholder="Teléfono de oficina +52 (XXX) XXX-XXXX" id="tel_oficina_osc" #tel_oficina_osc="ngModel" name="tel_oficina_osc" [(ngModel)]="clearing.tel_oficina_osc"  class="validate required" required>
-                                <mat-error *ngIf="tel_oficina_osc.invalid || tel_oficina_osc.dirty || tel_oficina_osc.pristine || tel_oficina_osc.errors || tel_oficina_osc.touched">
-                                    El teléfono es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput placeholder="Dirección" id="direccion_osc" #direccion_osc="ngModel" name="direccion_osc" [(ngModel)]="clearing.direccion_osc"  class="validate required" required>
-                                <mat-error *ngIf="direccion_osc.dirty || direccion_osc.pristine || direccion_osc.errors">
-                                    La dirección es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" placeholder="País" id="pais_osc" #pais_osc="ngModel" name="pais_osc" [(ngModel)]="clearing.pais_osc"  class="validate required" required >
-                                    <!-- <mat-option value="">Seleccione</mat-option> -->
-                                    <mat-option *ngFor="let pais of paises;" [value]="pais.id">
-                                        {{pais.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="pais_osc.dirty || pais_osc.pristine || pais_osc.errors">
-                                    El país es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" placeholder="Provincia" id="provincia_osc" #provincia_osc="ngModel" name="provincia_osc" [(ngModel)]="clearing.provincia_osc"  class="validate required" required>
-                                    <mat-option *ngFor="let ciudad of ciudades;" [value]="ciudad.id">
-                                        {{ciudad.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="provincia_osc.dirty || provincia_osc.pristine || provincia_osc.errors">
-                                    La privincia es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" placeholder="Localidad" id="localidad_osc" #localidad_osc="ngModel" name="localidad_osc" [(ngModel)]="clearing.localidad_osc"  class="validate required" required>
-                                    <mat-option *ngFor="let localidad of localidades;" [value]="localidad.id">
-                                        {{localidad.nombre | titlecase}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="localidad_osc.dirty || localidad_osc.pristine || localidad_osc.errors">
-                                    La localidad es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" [textMask]="{mask: mask_cp, guide: false}" matInput placeholder="Código Postal" id="codigo_postal_osc" #codigo_postal_osc="ngModel" name="codigo_postal_osc" [(ngModel)]="clearing.codigo_postal_osc"  class="validate required" required>
-                                <mat-error *ngIf="codigo_postal_osc.dirty || codigo_postal_osc.pristine || codigo_postal_osc.errors">
-                                    El código postal es <strong>requerido</strong>
-                                </mat-error>  
-                            </mat-form-field>  
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput placeholder="Razón Social" id="razon_social_osc" #razon_social_osc="ngModel" name="razon_social_osc" [(ngModel)]="clearing.razon_social_osc"  class="validate required" required>
-                                <mat-error *ngIf="razon_social_osc.dirty || razon_social_osc.pristine || razon_social_osc.errors">
-                                    La Razón Social es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div> -->
-                        <!-- <div class="col-2"></div> -->
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput placeholder="RFC de la Organización" id="rfc_organizacion" #rfc_organizacion="ngModel" name="rfc_organizacion" [(ngModel)]="clearing.rfc_organizacion"  class="validate required" required>
-                                <mat-error *ngIf="rfc_organizacion.dirty || rfc_organizacion.pristine || rfc_organizacion.errors">
-                                    El RFC de la Organización es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                   <!--  <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput placeholder="Dirección legal" id="direccion_legal_osc" #direccion_legal_osc="ngModel" name="direccion_legal_osc" [(ngModel)]="clearing.direccion_legal_osc"  class="validate required" required>
-                                <mat-error *ngIf="direccion_legal_osc.dirty || direccion_legal_osc.pristine || direccion_legal_osc.errors">
-                                    La Dirección legal es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5"></div>
-                    </div> -->
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput placeholder="Descripción de la Organización (misión, visión, valores)" id="descripcion_organizacion" #descripcion_organizacion="ngModel" name="descripcion_organizacion" [(ngModel)]="clearing.descripcion_organizacion"  class="validate required" required></textarea>
-                                <mat-error *ngIf="descripcion_organizacion.dirty || descripcion_organizacion.pristine || descripcion_organizacion.errors">
-                                    La Descripción de la Organización es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-       
-       
-        <!-- Datos de contacto -->
-        <mat-accordion>
-            <mat-expansion-panel [expanded]="false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Datos de contacto</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel3">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <p class="description">
-                                    En esta sección se piden los datos del solicitante, 
-                                    quien será la persona con quien la Red Pro Bono México se 
-                                    pondrá en contacto para continuar con el proceso
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput placeholder="Nombre completo" id="nombre_contacto" #nombre_contacto="ngModel" name="nombre_contacto" [(ngModel)]="clearing.nombre_contacto"  class="validate required" required>
-                                <mat-error *ngIf="nombre_contacto.dirty || nombre_contacto.pristine || nombre_contacto.errors">
-                                    El Nombre completo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="email" matInput placeholder="Correo electrónico" id="correo_contacto" #correo_contacto="ngModel" name="correo_contacto" [(ngModel)]="clearing.correo_contacto" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" class="validate required" required>
-                                <mat-error *ngIf="correo_contacto.dirty || correo_contacto.pristine || correo_contacto.errors && correo_contacto.errors.pattern">
-                                    El correo electrónico no es <strong>valido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>    
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput placeholder="Puesto de trabajo en la OSC" id="puesto_contacto" #puesto_contacto="ngModel" name="puesto_contacto" [(ngModel)]="clearing.puesto_contacto"  class="validate required" required>
-                                <mat-error *ngIf="puesto_contacto.dirty || puesto_contacto.pristine || puesto_contacto.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput [textMask]="{mask: mask_telefono, guide: false}" placeholder="Teléfono directo +52 - XXXXX"  id="telefono_contacto" #telefono_contacto="ngModel" name="telefono_contacto" [(ngModel)]="clearing.telefono_contacto"  class="validate required" required>
-                                <mat-error *ngIf="telefono_contacto.invalid || telefono_contacto.dirty || telefono_contacto.pristine || telefono_contacto.errors || telefono_contacto.touched">
-                                    El teléfono directo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput [textMask]="{mask: mask_telefono, guide: false}" placeholder="Celular +52 - XXXXX"  id="celular_contacto" #celular_contacto="ngModel" name="celular_contacto" [(ngModel)]="clearing.celular_contacto"  class="validate required" required>
-                                <mat-error *ngIf="celular_contacto.invalid || celular_contacto.dirty || celular_contacto.pristine || celular_contacto.errors || celular_contacto.touched">
-                                    El celular es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5"></div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-        
-        
-        <!-- Detalles de la organización -->
-        <mat-accordion>
-            <mat-expansion-panel [expanded]="false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Detalles de la organización</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel4">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <p class="description">
-                                En esta sección se piden los datos del solicitante, 
-                                quien será la persona con quien la Red Pro Bono México se 
-                                pondrá en contacto para continuar con el proceso
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput placeholder="¿Cuál es la población objetivo con la que trabaja la organización?"
-                                id="problema_social_proyecto" #problema_social_proyecto="ngModel" name="problema_social_proyecto" [(ngModel)]="clearing.problema_social_proyecto"  class="validate required" required></textarea>
-                                <mat-error *ngIf="problema_social_proyecto.dirty || problema_social_proyecto.pristine || problema_social_proyecto.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput placeholder="¿Cuáles son las principales materias con las que trabaja la organización?"
-                                id="impacto_proyecto" #impacto_proyecto="ngModel" name="impacto_proyecto" [(ngModel)]="clearing.impacto_proyecto"  class="validate required" required></textarea>
-                                <mat-error *ngIf="impacto_proyecto.dirty || impacto_proyecto.pristine || impacto_proyecto.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor">
-                                ¿Su organización cuanta con el apoyo financiero o material de gobierno
-                                o partidos políticos?* 
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="cuenta_con_apoyo" #cuenta_con_apoyo="ngModel" name="cuenta_con_apoyo" [(ngModel)]="clearing.cuenta_con_apoyo"  class="validate required" required>
-                                <mat-radio-button value="1">Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor">
-                                ¿Su organización tiene algún fin religioso?*
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="fin_religioso" #fin_religioso="ngModel" name="fin_religioso" [(ngModel)]="clearing.fin_religioso" >
-                                <mat-radio-button value="1" >Si</mat-radio-button>
-                                <mat-radio-button value="0" >No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" matInput placeholder="Nombre del Presidente / Director(a) de la Organización" id="director_organizacion" #director_organizacion="ngModel" name="director_organizacion" [(ngModel)]="clearing.director_organizacion" class="validate required" required>
-                                <mat-error *ngIf="director_organizacion.dirty || director_organizacion.pristine || director_organizacion.errors">
-                                    El dato es <strong>requerido</strong>
-                                </mat-error>    
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor mt-4">
-                                ¿Su organización discrimina con base en sexo, raza, religión, 
-                                nacionalidad o preferencia sexual?*
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="tiene_discriminacion" #tiene_discriminacion="ngModel" name="tiene_discriminacion" [(ngModel)]="clearing.tiene_discriminacion">
-                                <mat-radio-button value="1">Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor mt-4">
-                                ¿Estaría de acuerdo en aparecer como miembro de Red 
-                                Pro Bono México?*
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="miembro_red_probono" #miembro_red_probono="ngModel" name="miembro_red_probono" [(ngModel)]="clearing.miembro_red_probono">
-                                <mat-radio-button value="1" >Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                    </div> -->
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-
-        <!-- Trabajo de la organización -->
-        <!-- <mat-accordion>
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Trabajo de la organización</h4></span><span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel5">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion"  type="text" matInput 
-                                placeholder="Indique el año en que comenzó a trabajar su organización"
-                                [textMask]="{mask: mask_comienzo, guide: false}"
-                                id="comienzo_organizacion" #comienzo_organizacion="ngModel" 
-                                name="comienzo_organizacion" [(ngModel)]="clearing.comienzo_organizacion"  
-                                class="validate required" required>
-                                <mat-error *ngIf="comienzo_organizacion.dirty || comienzo_organizacion.pristine || comienzo_organizacion.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                            <mat-form-field>
-                                <input [disabled]="!edicion" matInput [matDatepicker]="picker2" placeholder="Indique el año en que comenzó a 
-                                trabajar su organización" id="comienzo_organizacion" #comienzo_organizacion="ngModel" name="comienzo_organizacion" [(ngModel)]="clearing.comienzo_organizacion"  class="validate required" required>
-                                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                                <mat-datepicker #picker2></mat-datepicker>
-                                <mat-error *ngIf="comienzo_organizacion.dirty || comienzo_organizacion.pristine || comienzo_organizacion.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="number" matInput placeholder="Indique el presupuesto anual de la organización" 
-                                id="presupuesto_anual" #presupuesto_anual="ngModel" name="presupuesto_anual" [(ngModel)]="clearing.presupuesto_anual"  class="validate required" required>
-                                <mat-error *ngIf="presupuesto_anual.dirty || presupuesto_anual.pristine || presupuesto_anual.errors">
-                                    El presupuesto anual es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput 
-                                placeholder="¿Cuales son sus principales fuentes de financiamiento?"
-                                id="fuentes_financiamiento" #fuentes_financiamiento="ngModel" name="fuentes_financiamiento" [(ngModel)]="clearing.fuentes_financiamiento"  class="validate required" required>
-                                <mat-error *ngIf="fuentes_financiamiento.dirty || fuentes_financiamiento.pristine || fuentes_financiamiento.errors">
-                                    La fuente de financiamiento es <strong>requerida</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor mt-4">
-                                ¿Pertenecen a alguna otra Red de abogados?*
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="otra_red_abogados" #otra_red_abogados="ngModel" name="otra_red_abogados" [(ngModel)]="clearing.otra_red_abogados">
-                                <mat-radio-button value="1">Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5" >
-                            <div class="descripcion-contenedor mt-4">
-                                ¿Reciben o han recibido servicios Pro Bono jurídicos?*	
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="recibio_ayuda_probono" #recibio_ayuda_probono="ngModel" name="recibio_ayuda_probono" [(ngModel)]="clearing.recibio_ayuda_probono">
-                                <mat-radio-button value="1">Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="number" matInput 
-                                placeholder="Indique el no. del personal contratado por la organización"
-                                id="personal_contratado" #personal_contratado="ngModel" name="personal_contratado" [(ngModel)]="clearing.personal_contratado"  class="validate required" required>
-                                <mat-error *ngIf="personal_contratado.dirty || personal_contratado.pristine || personal_contratado.errors">
-                                    El No. de personal contratado es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="number" matInput 
-                                placeholder="Indique el número de voluntarios de la Organización"
-                                id="voluntarios_osc" #voluntarios_osc="ngModel" name="voluntarios_osc" [(ngModel)]="clearing.voluntarios_osc"  class="validate required" required>
-                                <mat-error *ngIf="voluntarios_osc.dirty || voluntarios_osc.pristine || voluntarios_osc.errors">
-                                    El No. de voluntarios es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5 mt-especial">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput 
-                                placeholder="Órganos de Gobierno (Consejo/patronato/Junta/etc)"
-                                id="organos_gobierno" #organos_gobierno="ngModel" name="organos_gobierno" [(ngModel)]="clearing.organos_gobierno"  class="validate required" required>
-                                <mat-error *ngIf="organos_gobierno.dirty || organos_gobierno.pristine || organos_gobierno.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor mt-1">
-                                ¿Cuentan con un consejo independiente a la junta directiva que 
-                                audita las actividades de la organización?*
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="cuenta_consejo_independiente" #cuenta_consejo_independiente="ngModel" name="cuenta_consejo_independiente" [(ngModel)]="clearing.cuenta_consejo_independiente" >
-                                <mat-radio-button value="1">Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput 
-                                placeholder="Nombre del presidente de la organización" 
-                                id="presidente_organizacion" #presidente_organizacion="ngModel" name="presidente_organizacion" [(ngModel)]="clearing.presidente_organizacion"  class="validate required" required>
-                                <mat-error *ngIf="presidente_organizacion.dirty || presidente_organizacion.pristine || presidente_organizacion.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput 
-                                placeholder="Nombre de los consejeros y/o voceros de la organización"
-                                id="consejeros_organizacion" #consejeros_organizacion="ngModel" name="consejeros_organizacion" [(ngModel)]="clearing.consejeros_organizacion"  class="validate required" required>
-                                <mat-error *ngIf="consejeros_organizacion.dirty || consejeros_organizacion.pristine || consejeros_organizacion.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput 
-                                placeholder="Número de beneficiarios directos de su organización al año, Describe su forma de trabajo"
-                                id="beneficiarios_directos" #beneficiarios_directos="ngModel" name="beneficiarios_directos" [(ngModel)]="clearing.beneficiarios_directos"  class="validate required" required></textarea>
-                                <mat-error *ngIf="beneficiarios_directos.dirty || beneficiarios_directos.pristine || beneficiarios_directos.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput 
-                                placeholder="Número de beneficiarios indirectos de su organización al año, Describe su forma de trabajo"
-                                id="beneficiarios_indirectos" #beneficiarios_indirectos="ngModel" name="beneficiarios_indirectos" [(ngModel)]="clearing.beneficiarios_indirectos"  class="validate required" required></textarea>
-                                <mat-error *ngIf="beneficiarios_indirectos.dirty || beneficiarios_indirectos.pristine || beneficiarios_indirectos.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" placeholder="Principales materias que enfoca su trabajo"
-                                id="materias_enfoque" #materias_enfoque="ngModel" name="materias_enfoque" [(ngModel)]="clearing.materias_enfoque"  class="validate required" required>
-                                    <mat-option *ngFor="let enfoque of materiasenfoque;" [value]="enfoque.id">
-                                        {{enfoque.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="materias_enfoque.dirty || materias_enfoque.pristine || materias_enfoque.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" placeholder="Tipo de comunidad con la que trabajan"
-                                id="tipo_comunidad" #tipo_comunidad="ngModel" name="tipo_comunidad" [(ngModel)]="clearing.tipo_comunidad"  class="validate required" required>
-                                    <mat-option *ngFor="let comunidad of comunidades;" [value]="comunidad.id">
-                                        {{comunidad.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="tipo_comunidad.dirty || tipo_comunidad.pristine || tipo_comunidad.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>   
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput 
-                                placeholder="Principales características de la comunidad que atienden"
-                                id="caracteristicas_comunidad" #caracteristicas_comunidad="ngModel" name="caracteristicas_comunidad" [(ngModel)]="clearing.caracteristicas_comunidad"  class="validate required" required></textarea>
-                                <mat-error *ngIf="caracteristicas_comunidad.dirty || caracteristicas_comunidad.pristine || caracteristicas_comunidad.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion> -->
-        <!-- Principal conocimiento de las materias legales de la organización -->
- <!--        <mat-accordion>
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Principal conocimiento de las materias legales de la organización</h4></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel6">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <p class="description">
-                                Estos datos son importantes para tener un contacto eficiente 
-                                con las organizaciones con las que trabajamos
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-select">¿Qué materias legales considera usted que debe fortalecer su organización?*</div>
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" id="materias_legales" #materias_legales="ngModel" name="materias_legales" [(ngModel)]="clearing.materias_legales"  class="validate required" required>
-                                        <mat-option *ngFor="let legales of materiaslegales;" [value]="legales.id">
-                                            {{legales.nombre}}
-                                        </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="materias_legales.dirty || materias_legales.pristine || materias_legales.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-select">¿Por qué?*</div>
-                            <mat-form-field>
-                                <input [disabled]="!edicion" type="text" matInput id="porque_quiere_fortalecer" #porque_quiere_fortalecer="ngModel" name="porque_quiere_fortalecer" [(ngModel)]="clearing.porque_quiere_fortalecer"  class="validate required" required>
-                                <mat-error *ngIf="porque_quiere_fortalecer.dirty || porque_quiere_fortalecer.pristine || porque_quiere_fortalecer.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>  
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-select">¿Cuenta con aviso de privacidad?*</div>
-                            <Aviso de privacidad : {{clearing.cuenta_aviso_privacidad }}></Aviso>
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" id="cuenta_aviso_privacidad" #cuenta_aviso_privacidad="ngModel" name="cuenta_aviso_privacidad" [(ngModel)]="clearing.cuenta_aviso_privacidad"  class="validate required" required>
-                                    <mat-option value="1" >Si</mat-option>
-                                    <mat-option value="0">No</mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="cuenta_aviso_privacidad.dirty || cuenta_aviso_privacidad.pristine || cuenta_aviso_privacidad.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-select">¿Conoce las fechas y requisitos para la entrega de avisos de antilavado ante la autoridad?*</div>
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" id="sabe_fechas_avisos_antilavado" #sabe_fechas_avisos_antilavado="ngModel" name="sabe_fechas_avisos_antilavado" [(ngModel)]="clearing.sabe_fechas_avisos_antilavado"  class="validate required" required>
-                                    <mat-option value="1">Si</mat-option>
-                                    <mat-option value="0">No</mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="sabe_fechas_avisos_antilavado.dirty || sabe_fechas_avisos_antilavado.pristine || sabe_fechas_avisos_antilavado.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error> 
-                            </mat-form-field>         
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-select">¿Sabe usted cuando se debe entregar la declaración anual?*</div>
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" id="sabe_fecha_entrega_declaracion_anual" #sabe_fecha_entrega_declaracion_anual="ngModel" name="sabe_fecha_entrega_declaracion_anual" [(ngModel)]="clearing.sabe_fecha_entrega_declaracion_anual"  class="validate required" required>
-                                    <mat-option value="1">Si</mat-option>
-                                    <mat-option value="0">No</mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="sabe_fecha_entrega_declaracion_anual.dirty || sabe_fecha_entrega_declaracion_anual.pristine || sabe_fecha_entrega_declaracion_anual.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error> 
-                            </mat-form-field> 
-                        </div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion> -->
-        
-        
-        <!-- Documentación -->
-        <mat-accordion>
-            <mat-expansion-panel [expanded]="false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Documentación</h4></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel7">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <p class="description">
-                                ¿Con cuáles documentos cuentan?*
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-sm-12">
-                            <mat-checkbox [disabled]="!edicion" id="acta_constitutiva" #acta_constitutiva="ngModel" name="acta_constitutiva" [(ngModel)]="clearing.acta_constitutiva">Acta constitutiva</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 check-largo">
-                            <mat-checkbox [disabled]="!edicion" id="recibos_sat" #recibos_sat="ngModel" name="recibos_sat" [(ngModel)]="clearing.recibos_sat">Autorización para emitir recibos deducible por el SAT</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12">
-                            <mat-checkbox [disabled]="!edicion" id="cluni" #cluni="ngModel" name="cluni" [(ngModel)]="clearing.cluni" >CLUNI</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 mt-3">
-                            <mat-checkbox [disabled]="!edicion" id="relatorio_anual" #relatorio_anual="ngModel" name="relatorio_anual" [(ngModel)]="clearing.relatorio_anual" >Relatório anual de actividades</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 mt-3">
-                            <mat-checkbox [disabled]="!edicion" id="reporte_logros" #reporte_logros="ngModel" name="reporte_logros" [(ngModel)]="clearing.reporte_logros" >Reporte de logos sobre proyectos</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 mt-3">
-                            <mat-checkbox [disabled]="!edicion" id="auditoria_anual" #auditoria_anual="ngModel" name="auditoria_anual" [(ngModel)]="clearing.auditoria_anual" >Auditoría anual contable</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 mt-3">
-                            <mat-checkbox [disabled]="!edicion" id="RFC" #RFC="ngModel" name="RFC" [(ngModel)]="clearing.RFC" >RFC</mat-checkbox>
-                        </div>
-                        <div class="col-lg-4 col-sm-12 mt-3">
-                            <mat-checkbox [disabled]="!edicion" id="ninguno" #ninguno="ngModel" name="ninguno" [(ngModel)]="clearing.ninguno" >No sé</mat-checkbox>
-                        </div>
-                        <p class="description">
-                            Para brindar una mejor asesoría, les solicitamos adjuntar estatutos y 
-                            CV de los dirigentes (Presidente, Director, etc.) de la organización.
-                        </p>
-                    </div>
-                    <div class="row" *ngIf="clearing.estado_clearing <= 2 || clearing.estado_clearing == null">
-                        <div class="col-12 text-right">
-                            <!-- <button class="btn btn-success boton-verde" mat-button >Subir documentos</button> -->
-                            <!-- <input id="fileInput" [hidden]="true" name="file" type="file" class="btn btn-success boton-verde">
-                            <button id="uploadButton" class="btn btn-success boton-verde"> Choose Files </button>  -->
-                            <!-- <input type="file" name="myfile" multiple/> -->
-                            <!-- <div class="upload-btn-wrapper"> -->
-                                <!-- <button class="btn btn-success boton-verde" >Subir documentos</button> -->
-                                <input type="file" class="btn btn-success boton-verde" name="myfile" (change)="fileChangeEvent($event)" multiple/>
-                            <!-- </div> -->
-                            <style>
-                                .upload-btn-wrapper {
-                                    position: relative;
-                                    /* overflow: hidden; */
-                                    display: inline-block;
-                                }
-                                .upload-btn-wrapper input[type=file] {
-                                    font-size: 100px;
-                                    position: absolute;
-                                    left: 0;
-                                    top: 0;
-                                    opacity: 0;
-                                }
-                            </style>
-                        </div>
-                    </div>
-                    <!-- Lista de documentos -->
-                    <div class="row" *ngIf="clearing.estado_clearing == 2">
-                        <div class="col-12">
-                            <table >
-                                <tr>
-                                    <td>Documento 1</td>
-                                </tr>
-                                <tr>
-                                    <td>Documento 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Documento 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Documento 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Documento 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Documento 5</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="row" *ngIf="clearing.estado_clearing == 2">
-                        <div class="col-12 text-right">
-                            <button *ngIf="clearing.estado_clearing == 2" class="btn btn-success boton-verde" mat-button>Guardar</button>
-                        </div>
-                    </div>
-                    <div class="row" *ngIf="clearing.estado_clearing >= 3">
-                        <div class="col-12">
-                            <ul>
-                                <li>Documento 1</li>
-                                <li>Documento 2</li>
-                                <li>Documento 3</li>
-                                <li>Documento 4</li>
-                                <li>Documento 5</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-
-        <!-- Comentarios -->
-         <mat-accordion>
-            <mat-expansion-panel [expanded]="false">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span> <h4 class="textos-verdes titulo-medio md-5">Comentarios</h4></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel8">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field>
-                                <mat-select [disabled]="!edicion" placeholder="¿Cómo conoció la Red Pro Bono México?"
-                                id="conocimiento_redprobono_mexico" #conocimiento_redprobono_mexico="ngModel" 
-                                name="conocimiento_redprobono_mexico" [(ngModel)]="clearing.conocimiento_redprobono_mexico" 
-                                class="validate required" required>
-                                    <mat-option *ngFor="let conocimiento of conocimientosprobono;" [value]="conocimiento.id">
-                                        {{conocimiento.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="conocimiento_redprobono_mexico.dirty || conocimiento_redprobono_mexico.pristine || conocimiento_redprobono_mexico.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error> 
-                            </mat-form-field>         
-                        </div>
-                        <div class="col-sm-12 col-lg-7"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea [disabled]="!edicion" matInput 
-                                placeholder="Comentarios adicionales"
-                                id="comentarios_adicionales" #comentarios_adicionales="ngModel" name="comentarios_adicionales" [(ngModel)]="clearing.comentarios_adicionales"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-12">
-                            <div class="descripcion-contenedor-3">
-                                    Al aceptar la siguiente casilla se compromete a notificar cualquier cambio en la información brindada en este formulario. Así como a notificar de cualquier desarrollo de su caso y a tomar un papel activo en su relación con la Red Pro Bono México.*
-                            </div>
-                            <mat-radio-group [disabled]="!edicion" id="acuerdo_entrega_docs" name="acuerdo_entrega_docs"  #acuerdo_entrega_docs="ngModel" [(ngModel)]="clearing.acuerdo_entrega_docs" >
-                                <mat-radio-button value="1">Si</mat-radio-button>
-                                <mat-radio-button value="0">No</mat-radio-button>
-                            </mat-radio-group>
-                            <br>
-                        </div>
-                         <div class="col-sm-12 col-lg-5">
-                            <div class="descripcion-contenedor-3">
-                                <mat-form-field>
-                                        <input [disabled]="!edicion"  matInput [matDatepicker]="ultimo_cambio" placeholder="¿Cuándo se realizó el último cambio de estatutos?" id="ultimo_cambio" #ultimo_cambio="ngModel" name="ultimo_cambio" [(ngModel)]="clearing.ultimo_cambio">
-                                        <mat-datepicker-toggle matSuffix [for]="ultimo_cambio"></mat-datepicker-toggle>
-                                        <mat-datepicker #ultimo_cambio></mat-datepicker>
-                                </mat-form-field>
-                                <mat-form-field>
-                                    <input [disabled]="!edicion" matInput placeholder="¿En qué consistió el cambio de estatutos?" id="cambio_estatuto" #cambio_estatuto="ngModel" name="cambio_estatuto" [(ngModel)]="clearing.cambio_estatuto">
-                                    <!-- <mat-error *ngIf="director_organizacion.dirty || director_organizacion.pristine || director_organizacion.errors">
-                                        El dato es <strong>requerido</strong>
-                                    </mat-error>  -->
-                                </mat-form-field>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-
-        
-        <!-- Asignar caso a entidad probono -->
-        <form  #AsignarCaso="ngForm"  id="form-caso">
-        <mat-accordion *ngIf="clearing.estado_clearing >= 3">
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing != 6"> <h4 class="textos-verdes titulo-medio md-5">Asignar caso a entidad probono</h4></span>
-                                    <span *ngIf="clearing.estado_clearing == 6"> <h4 class="textos-verdes titulo-medio md-5">Entidad Pro Bono</h4></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel8">
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-6">
-                            <mat-form-field  *ngIf="clearing.estado_clearing == 3">
-                                <mat-select placeholder="Seleccione la entidad Pro Bono a la que se asigna el caso"
-                                id="entidad_probono" #entidad_probono="ngModel" 
-                                name="entidad_probono" [(ngModel)]="clearing.entidad_probono"
-                                class="validate required" required >
-                                    <mat-option *ngFor="let entidad of entidadesProbono;" [value]="entidad.id">
-                                        {{entidad.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                 <mat-error *ngIf="entidad_probono.dirty || entidad_probono.pristine || entidad_probono.errors">
-                                    Este campo es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>  
-                            <mat-form-field  *ngIf="clearing.estado_clearing > 3">
-                                <mat-select placeholder="Seleccione la entidad Pro Bono a la que se asigna el caso"
-                                id="entidad_probono" disabled="true" *ngIf="clearing.estado_clearing != 3" #entidad_probono="ngModel" name="entidad_probono" [(ngModel)]="clearing.entidad_probono" >
-                                    <mat-option *ngFor="let entidad of entidadesProbono;" [value]="entidad.id">
-                                        {{entidad.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>  
-                        </div>
-                        <div class="col-sm-12 col-lg-6 text-right" *ngIf="clearing.estado_clearing == 3">
-                            <button  class="btn btn-success boton-verde" mat-button>Subir contrato</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <mat-form-field class="example-full-width">
-                                <textarea  *ngIf="clearing.estado_clearing == 3" matInput placeholder="Comentarios adicionales" id="comentarios_entidad" #comentarios_entidad="ngModel" name="comentarios_entidad" [(ngModel)]="clearing.comentarios_entidad" class="validate"></textarea>
-                                <textarea disabled="true"  *ngIf="clearing.estado_clearing != 3" matInput placeholder="Comentarios adicionales" id="comentarios_entidad" #comentarios_entidad="ngModel" name="comentarios_entidad" [(ngModel)]="clearing.comentarios_entidad" class="validate"></textarea>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="row" *ngIf="clearing.estado_clearing == 3">
-                        <div class="col-12 text-right">
-                            <button class="btn btn-success boton-verde" (click)="AsignarCaso.valid ? asignarCaso() : validaciones(AsignarCaso._directives)" mat-button>Guardar</button>
-                        </div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-        </form>
-        <!-- Subestado del proceso -->
-         <form  #Subestado="ngForm"  id="form-subestado">
-        <mat-accordion *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing != 6">
-            <mat-expansion-panel [expanded]="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                            <div class="row">
-                                <div class="col-12 text-left">
-                                    <span > <h4 class="textos-verdes titulo-medio md-5">Sub-estado del proceso</h4></span>
-                                    <hr class="linea-texto-inferior" align="left">
-                                </div>
-                            </div>
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="panel8">
-                    <div class="row">
-                        <div class="col-12 text-left">
-                            <p class="description">
-                                Favor de especificar el sub-estado para poder continuar*
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-lg-5">
-                            <mat-form-field *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing < 6">
-                                <mat-select placeholder="Sub-estado"  
-                                id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing" 
-                                [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
-                                    <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
-                                        {{sub.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <!-- <mat-select placeholder="Sub-estado" disabled="true"
-                                id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing" 
-                                [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
-                                    <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
-                                        {{sub.nombre}}
-                                    </mat-option>
-                                </mat-select> -->
-                                <mat-error *ngIf="subestado_clearing.dirty || subestado_clearing.pristine || subestado_clearing.errors">
-                                    El subestado es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field>  
-                            <mat-form-field *ngIf="clearing.estado_clearing >= 6">
-                                <mat-select placeholder="Sub-estado"  disabled="true"
-                                id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing" 
-                                [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
-                                    <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
-                                        {{sub.nombre}}
-                                    </mat-option>
-                                </mat-select>
-                                <!-- <mat-select placeholder="Sub-estado" disabled="true"
-                                id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing" 
-                                [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
-                                    <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
-                                        {{sub.nombre}}
-                                    </mat-option>
-                                </mat-select> -->
-                                <mat-error *ngIf="subestado_clearing.dirty || subestado_clearing.pristine || subestado_clearing.errors">
-                                    El subestado es <strong>requerido</strong>
-                                </mat-error>
-                            </mat-form-field> 
-                        </div>
-                        <div class="col-sm-12 col-lg-7">
-                            <button *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing < 6" 
-                            class="btn btn-success boton-verde" mat-button
-                            (click)="Subestado.valid ? guardarSubEstado(this.clearing.subestado_clearing) : validaciones(Subestado._directives)">Guardar subestado</button>
-                        </div>
-                    </div>
-                </div>
-            </mat-expansion-panel>
-        </mat-accordion>
-        </form>
-        
-        <!-- Informe y bitácora del caso -->
-        <mat-accordion *ngIf="clearing.estado_clearing == 6">
-                <mat-expansion-panel [expanded]="true">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                                <div class="row">
-                                    <div class="col-12 text-left">
-                                        <span > <h4 class="textos-verdes titulo-medio md-5">Informe</h4></span>
-                                        <hr class="linea-texto-inferior" align="left">
-                                    </div>
-                                </div>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <div class="panel8">
-                        <div class="row">
-                            <div class="col-sm-12 col-lg-6">
-                                <mat-form-field>
-                                    <input type="text" [disabled]="!edicion" matInput placeholder="Entidad Pro Bono a cargo del caso" id="nombre_osc" #nombre_osc="ngModel" name="nombre_osc" [(ngModel)]="clearing.nombre_osc" class="validate required" required>
-                                </mat-form-field> 
-                            </div>
-                            <div class="col-sm-12 col-lg-6 text-right">
-                                <mat-form-field>
-                                    <input type="text" [disabled]="!edicion" matInput placeholder="Nombre de la Organización" id="nombre_osc" #nombre_osc="ngModel" name="nombre_osc" [(ngModel)]="clearing.nombre_osc" class="validate required" required>
-                                </mat-form-field>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p class="description text-justify">Notas</p>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, ut nobis splendide scripserit pro. Ferri electram in usu. Summo detracto signiferumque eos id, eros periculis ne sea. Ius case equidem iracundia no, eum iusto libris doming ne, vix an utamur reformidans efficiantur. Ea docendi principes reprimique eam. At tation antiopam electram his, ferri maiorum euripidis sed an.
-                                </p>
-                                <p class="description text-justify">
-                                    Ea vero aliquid mea. Vim timeam habemus platonem cu, doctus consequuntur ex nec, ea sea augue aeque eleifend. Adversarium ullamcorper vix cu, et possit corrumpit repudiare per, case ubique vis cu. Aliquip ornatus pri cu, vis ceteros mnesarchum ex, at qualisque disputando has. Vocent debitis dissentias vis ea, cu nihil platonem prodesset vis, libris blandit ponderum ex eos. Usu delenit scripserit temporibus ex, hinc albucius suavitate vix in.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </mat-expansion-panel>
-            </mat-accordion>
-        <!-- Enviar formularios -->
-        <div class="botones md-50 mt-50">
+    <!-- Datos generales -->
+    <mat-accordion #cuatro id="cuatro">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
             <div class="row">
-                <!-- Regresa a listado de todas las solicitudes -->
-                <div class="col-lg-4 col-sm-12 text-left">
-                    <a routerLink="/solicitudes">
-                        <button *ngIf="clearing.estado_clearing != null && clearing.estado_clearing != 1" 
-                            class="btn btn-danger boton-marron" mat-button>
-                            <i class="fa fa-angle-left"></i>
-                            <i class="fa fa-angle-left"></i> 
-                            Atrás
-                        </button>
-                    </a>
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Datos generales</h4></span>
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel1">
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input type="text" [disabled]="!edicion" matInput placeholder="Nombre de la organización" id="nombre_osc" #nombre_osc="ngModel" name="nombre_osc" [(ngModel)]="clearing.nombre_osc" class="validate required" required>
+                <mat-error *ngIf="nombre_osc.dirty || nombre_osc.pristine || nombre_osc.errors">
+                  El nombre de la organización es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" matInput [matDatepicker]="picker3" placeholder="Fecha de solicitud" id="fecha_solicitud" #fecha_solicitud="ngModel" name="fecha_solicitud" [(ngModel)]="clearing.fecha_solicitud" class="validate required" required>
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+                <mat-error *ngIf="fecha_solicitud.dirty || fecha_solicitud.pristine || fecha_solicitud.errors">
+                  La fecha de solicitud es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-12">
+              <mat-form-field class="example-full-width">
+                <textarea [disabled]="!edicion" matInput placeholder="Descripción del caso del que solicita asesoría pro bono" id="descripcion_caso" #descripcion_caso="ngModel" name="descripcion_caso" [(ngModel)]="clearing.descripcion_caso" class="validate required" required></textarea>
+                <mat-error *ngIf="descripcion_caso.dirty || descripcion_caso.pristine || descripcion_caso.errors">
+                  La descripción del caso es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div>
+      <div class="col-12 text-center">
+        <span> <h4 class="textos-verdes titulo-medio md-5">¿Es la primera vez que llenas este formulario?</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
+        <mat-radio-group>
+          <mat-radio-button value="true" [(ngModel)]="clearing.first_time">Sí</mat-radio-button>
+          <mat-radio-button value="false" [(ngModel)]="clearing.first_time">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <br>
+    </div>
+
+    <!-- Datos de la OSC -->
+    <mat-accordion *ngIf="clearing.first">
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row">
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Datos de la OSC</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel2">
+          <div class="row">
+            <div class="col-12 text-left">
+              <p class="description">
+                Estos datos son importantes para tener un contacto eficiente
+                con las organizaciones con las que trabajamos
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="email" matInput placeholder="Email" id="email_osc" #email_osc="ngModel" name="email_osc" [(ngModel)]="clearing.email_osc" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" class="validate required" required>
+                <mat-error *ngIf="email_osc.dirty || email_osc.pristine || email_osc.errors && email_osc.errors.pattern">
+                  El email no es <strong>valido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="url" matInput placeholder="Sitio web de la OSC" id="sitio_web_osc" #sitio_web_osc="ngModel" name="sitio_web_osc" [(ngModel)]="clearing.sitio_web_osc" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)" class="validate required" required>
+                <mat-error *ngIf="sitio_web_osc.dirty || sitio_web_osc.pristine || sitio_web_osc.errors && sitio_web_osc.errors.pattern">
+                  El sitio web no es <strong>valido</strong> (ej. http://www.ejemplo.com) y <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput [textMask]="{mask: mask_telefono, guide: false}" placeholder="Teléfono de oficina +52 (XXX) XXX-XXXX" id="tel_oficina_osc" #tel_oficina_osc="ngModel" name="tel_oficina_osc" [(ngModel)]="clearing.tel_oficina_osc" class="validate required" required>
+                <mat-error *ngIf="tel_oficina_osc.invalid || tel_oficina_osc.dirty || tel_oficina_osc.pristine || tel_oficina_osc.errors || tel_oficina_osc.touched">
+                  El teléfono es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput placeholder="Dirección" id="direccion_osc" #direccion_osc="ngModel" name="direccion_osc" [(ngModel)]="clearing.direccion_osc" class="validate required" required>
+                <mat-error *ngIf="direccion_osc.dirty || direccion_osc.pristine || direccion_osc.errors">
+                  La dirección es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <mat-select [disabled]="!edicion" placeholder="País" id="pais_osc" #pais_osc="ngModel" name="pais_osc" [(ngModel)]="clearing.pais_osc" class="validate required" required>
+                  <!-- <mat-option value="">Seleccione</mat-option> -->
+                  <mat-option *ngFor="let pais of paises;" [value]="pais.id">
+                    {{pais.nombre}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="pais_osc.dirty || pais_osc.pristine || pais_osc.errors">
+                  El país es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <mat-select [disabled]="!edicion" placeholder="Provincia" id="provincia_osc" #provincia_osc="ngModel" name="provincia_osc" [(ngModel)]="clearing.provincia_osc" class="validate required" required>
+                  <mat-option *ngFor="let ciudad of ciudades;" [value]="ciudad.id">
+                    {{ciudad.nombre}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="provincia_osc.dirty || provincia_osc.pristine || provincia_osc.errors">
+                  La privincia es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <mat-select [disabled]="!edicion" placeholder="Localidad" id="localidad_osc" #localidad_osc="ngModel" name="localidad_osc" [(ngModel)]="clearing.localidad_osc" class="validate required" required>
+                  <mat-option *ngFor="let localidad of localidades;" [value]="localidad.id">
+                    {{localidad.nombre | titlecase}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="localidad_osc.dirty || localidad_osc.pristine || localidad_osc.errors">
+                  La localidad es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" [textMask]="{mask: mask_cp, guide: false}" matInput placeholder="Código Postal" id="codigo_postal_osc" #codigo_postal_osc="ngModel" name="codigo_postal_osc" [(ngModel)]="clearing.codigo_postal_osc" class="validate required" required>
+                <mat-error *ngIf="codigo_postal_osc.dirty || codigo_postal_osc.pristine || codigo_postal_osc.errors">
+                  El código postal es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <!-- <div class="col-sm-12 col-lg-5">
+                <mat-form-field>
+                    <input [disabled]="!edicion" type="text" matInput placeholder="Razón Social" id="razon_social_osc" #razon_social_osc="ngModel" name="razon_social_osc" [(ngModel)]="clearing.razon_social_osc"  class="validate required" required>
+                    <mat-error *ngIf="razon_social_osc.dirty || razon_social_osc.pristine || razon_social_osc.errors">
+                        La Razón Social es <strong>requerida</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div> -->
+            <!-- <div class="col-2"></div> -->
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput placeholder="RFC de la Organización" id="rfc_organizacion" #rfc_organizacion="ngModel" name="rfc_organizacion" [(ngModel)]="clearing.rfc_organizacion" class="validate required" required>
+                <mat-error *ngIf="rfc_organizacion.dirty || rfc_organizacion.pristine || rfc_organizacion.errors">
+                  El RFC de la Organización es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <!--  <div class="row">
+               <div class="col-sm-12 col-lg-5">
+                   <mat-form-field>
+                       <input [disabled]="!edicion" type="text" matInput placeholder="Dirección legal" id="direccion_legal_osc" #direccion_legal_osc="ngModel" name="direccion_legal_osc" [(ngModel)]="clearing.direccion_legal_osc"  class="validate required" required>
+                       <mat-error *ngIf="direccion_legal_osc.dirty || direccion_legal_osc.pristine || direccion_legal_osc.errors">
+                           La Dirección legal es <strong>requerida</strong>
+                       </mat-error>
+                   </mat-form-field>
+               </div>
+               <div class="col-2"></div>
+               <div class="col-sm-12 col-lg-5"></div>
+           </div> -->
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field class="example-full-width">
+                <textarea [disabled]="!edicion" matInput placeholder="Descripción de la Organización (misión, visión, valores)" id="descripcion_organizacion" #descripcion_organizacion="ngModel" name="descripcion_organizacion" [(ngModel)]="clearing.descripcion_organizacion" class="validate required" required></textarea>
+                <mat-error *ngIf="descripcion_organizacion.dirty || descripcion_organizacion.pristine || descripcion_organizacion.errors">
+                  La Descripción de la Organización es <strong>requerida</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- Datos de contacto -->
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row">
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Datos de contacto</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel3">
+          <div class="row">
+            <div class="col-12 text-left">
+              <p class="description">
+                En esta sección se piden los datos del solicitante,
+                quien será la persona con quien la Red Pro Bono México se
+                pondrá en contacto para continuar con el proceso
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput placeholder="Nombre completo" id="nombre_contacto" #nombre_contacto="ngModel" name="nombre_contacto" [(ngModel)]="clearing.nombre_contacto" class="validate required" required>
+                <mat-error *ngIf="nombre_contacto.dirty || nombre_contacto.pristine || nombre_contacto.errors">
+                  El Nombre completo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="email" matInput placeholder="Correo electrónico" id="correo_contacto" #correo_contacto="ngModel" name="correo_contacto" [(ngModel)]="clearing.correo_contacto" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" class="validate required" required>
+                <mat-error *ngIf="correo_contacto.dirty || correo_contacto.pristine || correo_contacto.errors && correo_contacto.errors.pattern">
+                  El correo electrónico no es <strong>valido</strong> (ej. ejemplo@do.com) y <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput placeholder="Puesto de trabajo en la OSC" id="puesto_contacto" #puesto_contacto="ngModel" name="puesto_contacto" [(ngModel)]="clearing.puesto_contacto" class="validate required" required>
+                <mat-error *ngIf="puesto_contacto.dirty || puesto_contacto.pristine || puesto_contacto.errors">
+                  Este campo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput [textMask]="{mask: mask_telefono, guide: false}" placeholder="Teléfono directo +52 - XXXXX" id="telefono_contacto" #telefono_contacto="ngModel" name="telefono_contacto" [(ngModel)]="clearing.telefono_contacto" class="validate required" required>
+                <mat-error *ngIf="telefono_contacto.invalid || telefono_contacto.dirty || telefono_contacto.pristine || telefono_contacto.errors || telefono_contacto.touched">
+                  El teléfono directo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" type="text" matInput [textMask]="{mask: mask_telefono, guide: false}" placeholder="Celular +52 - XXXXX" id="celular_contacto" #celular_contacto="ngModel" name="celular_contacto" [(ngModel)]="clearing.celular_contacto" class="validate required" required>
+                <mat-error *ngIf="celular_contacto.invalid || celular_contacto.dirty || celular_contacto.pristine || celular_contacto.errors || celular_contacto.touched">
+                  El celular es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5"></div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- Detalles de la organización -->
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row">
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Detalles de la organización</h4></span><!--  <span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span> -->
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel4">
+          <div class="row">
+            <div class="col-12 text-left">
+              <p class="description">
+                En esta sección se piden los datos del solicitante,
+                quien será la persona con quien la Red Pro Bono México se
+                pondrá en contacto para continuar con el proceso
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field class="example-full-width">
+                <textarea [disabled]="!edicion" matInput placeholder="¿Cuál es la población objetivo con la que trabaja la organización?"
+                          id="problema_social_proyecto" #problema_social_proyecto="ngModel" name="problema_social_proyecto" [(ngModel)]="clearing.problema_social_proyecto" class="validate required" required></textarea>
+                <mat-error *ngIf="problema_social_proyecto.dirty || problema_social_proyecto.pristine || problema_social_proyecto.errors">
+                  Este campo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field class="example-full-width">
+                <textarea [disabled]="!edicion" matInput placeholder="¿Cuáles son las principales materias con las que trabaja la organización?"
+                          id="impacto_proyecto" #impacto_proyecto="ngModel" name="impacto_proyecto" [(ngModel)]="clearing.impacto_proyecto" class="validate required" required></textarea>
+                <mat-error *ngIf="impacto_proyecto.dirty || impacto_proyecto.pristine || impacto_proyecto.errors">
+                  Este campo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <div class="descripcion-contenedor">
+                ¿Su organización cuanta con el apoyo financiero o material de gobierno
+                o partidos políticos?*
+              </div>
+              <mat-radio-group [disabled]="!edicion" id="cuenta_con_apoyo" #cuenta_con_apoyo="ngModel" name="cuenta_con_apoyo" [(ngModel)]="clearing.cuenta_con_apoyo" class="validate required" required>
+                <mat-radio-button value="1">Si</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-sm-12 col-lg-5">
+              <div class="descripcion-contenedor">
+                ¿Su organización tiene algún fin religioso?*
+              </div>
+              <mat-radio-group [disabled]="!edicion" id="fin_religioso" #fin_religioso="ngModel" name="fin_religioso" [(ngModel)]="clearing.fin_religioso">
+                <mat-radio-button value="1">Si</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <input [disabled]="!edicion" matInput placeholder="Nombre del Presidente / Director(a) de la Organización" id="director_organizacion" #director_organizacion="ngModel" name="director_organizacion" [(ngModel)]="clearing.director_organizacion" class="validate required" required>
+                <mat-error *ngIf="director_organizacion.dirty || director_organizacion.pristine || director_organizacion.errors">
+                  El dato es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- <div class="row">
+              <div class="col-sm-12 col-lg-5">
+                  <div class="descripcion-contenedor mt-4">
+                      ¿Su organización discrimina con base en sexo, raza, religión,
+                      nacionalidad o preferencia sexual?*
+                  </div>
+                  <mat-radio-group [disabled]="!edicion" id="tiene_discriminacion" #tiene_discriminacion="ngModel" name="tiene_discriminacion" [(ngModel)]="clearing.tiene_discriminacion">
+                      <mat-radio-button value="1">Si</mat-radio-button>
+                      <mat-radio-button value="0">No</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+              <div class="col-2"></div>
+              <div class="col-sm-12 col-lg-5">
+                  <div class="descripcion-contenedor mt-4">
+                      ¿Estaría de acuerdo en aparecer como miembro de Red
+                      Pro Bono México?*
+                  </div>
+                  <mat-radio-group [disabled]="!edicion" id="miembro_red_probono" #miembro_red_probono="ngModel" name="miembro_red_probono" [(ngModel)]="clearing.miembro_red_probono">
+                      <mat-radio-button value="1" >Si</mat-radio-button>
+                      <mat-radio-button value="0">No</mat-radio-button>
+                  </mat-radio-group>
+              </div>
+          </div> -->
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- Trabajo de la organización -->
+    <!-- <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                        <div class="row">
+                            <div class="col-12 text-left">
+                                <span> <h4 class="textos-verdes titulo-medio md-5">Trabajo de la organización</h4></span><span><h2 class="descripcion-verde"><i class="fa fa-angle-down"></i></h2></span>
+                                <hr class="linea-texto-inferior" align="left">
+                            </div>
+                        </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="panel5">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion"  type="text" matInput
+                            placeholder="Indique el año en que comenzó a trabajar su organización"
+                            [textMask]="{mask: mask_comienzo, guide: false}"
+                            id="comienzo_organizacion" #comienzo_organizacion="ngModel"
+                            name="comienzo_organizacion" [(ngModel)]="clearing.comienzo_organizacion"
+                            class="validate required" required>
+                            <mat-error *ngIf="comienzo_organizacion.dirty || comienzo_organizacion.pristine || comienzo_organizacion.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input [disabled]="!edicion" matInput [matDatepicker]="picker2" placeholder="Indique el año en que comenzó a
+                            trabajar su organización" id="comienzo_organizacion" #comienzo_organizacion="ngModel" name="comienzo_organizacion" [(ngModel)]="clearing.comienzo_organizacion"  class="validate required" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-datepicker #picker2></mat-datepicker>
+                            <mat-error *ngIf="comienzo_organizacion.dirty || comienzo_organizacion.pristine || comienzo_organizacion.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="number" matInput placeholder="Indique el presupuesto anual de la organización"
+                            id="presupuesto_anual" #presupuesto_anual="ngModel" name="presupuesto_anual" [(ngModel)]="clearing.presupuesto_anual"  class="validate required" required>
+                            <mat-error *ngIf="presupuesto_anual.dirty || presupuesto_anual.pristine || presupuesto_anual.errors">
+                                El presupuesto anual es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-lg-8 col-sm-12 text-right">
-                    <!-- Boton para Abandonar el caso -->
-                    <button *ngIf="clearing.estado_clearing != null && clearing.estado_clearing != 1 && clearing.estado_clearing != 6 && clearing.estado_clearing != 7" 
-                    class="btn btn-danger boton-rojo" mat-button
-                    (click)="abandonarCaso()">
-                        Abandonar
-                    </button>
-                    <!-- Abre link de bitácora -->
-                    <button *ngIf="clearing.estado_clearing == 4 || clearing.estado_clearing == 5" 
-                    class="btn btn-success boton-verde" mat-button>
-                        Seguimiento
-                    </button>
-                    <!-- Botón de envio de formulario por primera vez -->
-                    <button *ngIf="clearing.estado_clearing == '' || clearing.estado_clearing == null" 
-                        class="btn btn-success boton-verde" 
-                        (click)="formClearing.valid ? enviarSolicitud() : validaciones(formClearing._directives)" mat-button>
-                        Enviar
-                    </button>
-                    <!-- <button *ngIf="clearing.estado_clearing == '' || clearing.estado_clearing == null" 
-                        class="btn btn-success boton-verde" 
-                        (click)="enviarSolicitud()" mat-button>
-                        Enviar
-                    </button> -->
-                    <!-- Guardar y actualizar formulario -->
-                    <button *ngIf="clearing.estado_clearing == 1" 
-                        class="btn btn-success boton-verde" mat-button
-                        (click)="formClearing.valid ? actualizarSolicitud() : validaciones(formClearing._directives)" mat-button>
-                        Guardar
-                    </button>
-                    <!-- Imprimir todo el clearing -->
-                    <button *ngIf="clearing.estado_clearing != null && clearing.estado_clearing != 6" 
-                        class="btn btn-default boton-gris" (click)="imprimirPDF()"  mat-button>
-                        Imprimir
-                    </button>
-                    <!-- Actualiza status a Comprobado -->
-                    <button *ngIf="clearing.estado_clearing == 1" 
-                        class="btn btn-primary boton-azul" mat-button
-                        (click)="finalizarRevision()">
-                        Finalizar Revisión
-                    </button>
-                    <!-- Actualiza status a En Clearing -->
-                    <button *ngIf="clearing.estado_clearing == 2" 
-                        class="btn btn-success boton-verde-seco" mat-button 
-                        style="width: 198px !important;"
-                        (click)="finalizarComprobacion()">
-                        Finalizar Comprobación
-                    </button>
-                    <!-- Actualiza status a Asignada -->
-                    <button *ngIf="clearing.estado_clearing == 3"
-                        class="btn btn-success boton-verde-seco" mat-button
-                        (click)="AsignarCaso.valid && Subestado.valid ? finalizarClearing() : validaciones(AsignarCaso._directives && Subestado._directives)">
-                        Finalizar Clearing
-                    </button>
-                    <!-- Actualiza status a Cerrado -->
-                    <button *ngIf="clearing.estado_clearing == 4" 
-                        class="btn btn-default boton-amarillo" mat-button
-                        (click)="finalizarAsignacion()">
-                        Finalizar Asignada
-                    </button>
-                    <!-- Actualiza status a Finalizada -->
-                    <button *ngIf="clearing.estado_clearing == 5" 
-                        class="btn btn-default boton-amarillo" mat-button
-                        (click)="finalizarCerrada()">
-                        Finalizar Cerrada
-                    </button>
-                    <!-- Guarda el caso en expediente-->
-                    <button *ngIf="clearing.estado_clearing == 6" 
-                        class="btn btn-default boton-gris" mat-button
-                        (click)="imprimirPDF()">
-                        Guardar caso
-                    </button>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="text" matInput
+                            placeholder="¿Cuales son sus principales fuentes de financiamiento?"
+                            id="fuentes_financiamiento" #fuentes_financiamiento="ngModel" name="fuentes_financiamiento" [(ngModel)]="clearing.fuentes_financiamiento"  class="validate required" required>
+                            <mat-error *ngIf="fuentes_financiamiento.dirty || fuentes_financiamiento.pristine || fuentes_financiamiento.errors">
+                                La fuente de financiamiento es <strong>requerida</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <div class="descripcion-contenedor mt-4">
+                            ¿Pertenecen a alguna otra Red de abogados?*
+                        </div>
+                        <mat-radio-group [disabled]="!edicion" id="otra_red_abogados" #otra_red_abogados="ngModel" name="otra_red_abogados" [(ngModel)]="clearing.otra_red_abogados">
+                            <mat-radio-button value="1">Si</mat-radio-button>
+                            <mat-radio-button value="0">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5" >
+                        <div class="descripcion-contenedor mt-4">
+                            ¿Reciben o han recibido servicios Pro Bono jurídicos?*
+                        </div>
+                        <mat-radio-group [disabled]="!edicion" id="recibio_ayuda_probono" #recibio_ayuda_probono="ngModel" name="recibio_ayuda_probono" [(ngModel)]="clearing.recibio_ayuda_probono">
+                            <mat-radio-button value="1">Si</mat-radio-button>
+                            <mat-radio-button value="0">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="number" matInput
+                            placeholder="Indique el no. del personal contratado por la organización"
+                            id="personal_contratado" #personal_contratado="ngModel" name="personal_contratado" [(ngModel)]="clearing.personal_contratado"  class="validate required" required>
+                            <mat-error *ngIf="personal_contratado.dirty || personal_contratado.pristine || personal_contratado.errors">
+                                El No. de personal contratado es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="number" matInput
+                            placeholder="Indique el número de voluntarios de la Organización"
+                            id="voluntarios_osc" #voluntarios_osc="ngModel" name="voluntarios_osc" [(ngModel)]="clearing.voluntarios_osc"  class="validate required" required>
+                            <mat-error *ngIf="voluntarios_osc.dirty || voluntarios_osc.pristine || voluntarios_osc.errors">
+                                El No. de voluntarios es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5 mt-especial">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="text" matInput
+                            placeholder="Órganos de Gobierno (Consejo/patronato/Junta/etc)"
+                            id="organos_gobierno" #organos_gobierno="ngModel" name="organos_gobierno" [(ngModel)]="clearing.organos_gobierno"  class="validate required" required>
+                            <mat-error *ngIf="organos_gobierno.dirty || organos_gobierno.pristine || organos_gobierno.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5">
+                        <div class="descripcion-contenedor mt-1">
+                            ¿Cuentan con un consejo independiente a la junta directiva que
+                            audita las actividades de la organización?*
+                        </div>
+                        <mat-radio-group [disabled]="!edicion" id="cuenta_consejo_independiente" #cuenta_consejo_independiente="ngModel" name="cuenta_consejo_independiente" [(ngModel)]="clearing.cuenta_consejo_independiente" >
+                            <mat-radio-button value="1">Si</mat-radio-button>
+                            <mat-radio-button value="0">No</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="text" matInput
+                            placeholder="Nombre del presidente de la organización"
+                            id="presidente_organizacion" #presidente_organizacion="ngModel" name="presidente_organizacion" [(ngModel)]="clearing.presidente_organizacion"  class="validate required" required>
+                            <mat-error *ngIf="presidente_organizacion.dirty || presidente_organizacion.pristine || presidente_organizacion.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <input [disabled]="!edicion" type="text" matInput
+                            placeholder="Nombre de los consejeros y/o voceros de la organización"
+                            id="consejeros_organizacion" #consejeros_organizacion="ngModel" name="consejeros_organizacion" [(ngModel)]="clearing.consejeros_organizacion"  class="validate required" required>
+                            <mat-error *ngIf="consejeros_organizacion.dirty || consejeros_organizacion.pristine || consejeros_organizacion.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field class="example-full-width">
+                            <textarea [disabled]="!edicion" matInput
+                            placeholder="Número de beneficiarios directos de su organización al año, Describe su forma de trabajo"
+                            id="beneficiarios_directos" #beneficiarios_directos="ngModel" name="beneficiarios_directos" [(ngModel)]="clearing.beneficiarios_directos"  class="validate required" required></textarea>
+                            <mat-error *ngIf="beneficiarios_directos.dirty || beneficiarios_directos.pristine || beneficiarios_directos.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field class="example-full-width">
+                            <textarea [disabled]="!edicion" matInput
+                            placeholder="Número de beneficiarios indirectos de su organización al año, Describe su forma de trabajo"
+                            id="beneficiarios_indirectos" #beneficiarios_indirectos="ngModel" name="beneficiarios_indirectos" [(ngModel)]="clearing.beneficiarios_indirectos"  class="validate required" required></textarea>
+                            <mat-error *ngIf="beneficiarios_indirectos.dirty || beneficiarios_indirectos.pristine || beneficiarios_indirectos.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <mat-select [disabled]="!edicion" placeholder="Principales materias que enfoca su trabajo"
+                            id="materias_enfoque" #materias_enfoque="ngModel" name="materias_enfoque" [(ngModel)]="clearing.materias_enfoque"  class="validate required" required>
+                                <mat-option *ngFor="let enfoque of materiasenfoque;" [value]="enfoque.id">
+                                    {{enfoque.nombre}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="materias_enfoque.dirty || materias_enfoque.pristine || materias_enfoque.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="col-sm-12 col-lg-5">
+                        <mat-form-field>
+                            <mat-select [disabled]="!edicion" placeholder="Tipo de comunidad con la que trabajan"
+                            id="tipo_comunidad" #tipo_comunidad="ngModel" name="tipo_comunidad" [(ngModel)]="clearing.tipo_comunidad"  class="validate required" required>
+                                <mat-option *ngFor="let comunidad of comunidades;" [value]="comunidad.id">
+                                    {{comunidad.nombre}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="tipo_comunidad.dirty || tipo_comunidad.pristine || tipo_comunidad.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field class="example-full-width">
+                            <textarea [disabled]="!edicion" matInput
+                            placeholder="Principales características de la comunidad que atienden"
+                            id="caracteristicas_comunidad" #caracteristicas_comunidad="ngModel" name="caracteristicas_comunidad" [(ngModel)]="clearing.caracteristicas_comunidad"  class="validate required" required></textarea>
+                            <mat-error *ngIf="caracteristicas_comunidad.dirty || caracteristicas_comunidad.pristine || caracteristicas_comunidad.errors">
+                                Este campo es <strong>requerido</strong>
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
             </div>
+        </mat-expansion-panel>
+    </mat-accordion> -->
+    <!-- Principal conocimiento de las materias legales de la organización -->
+    <!--        <mat-accordion>
+               <mat-expansion-panel [expanded]="true">
+                   <mat-expansion-panel-header>
+                       <mat-panel-title>
+                               <div class="row">
+                                   <div class="col-12 text-left">
+                                       <span> <h4 class="textos-verdes titulo-medio md-5">Principal conocimiento de las materias legales de la organización</h4></span>
+                                       <hr class="linea-texto-inferior" align="left">
+                                   </div>
+                               </div>
+                       </mat-panel-title>
+                   </mat-expansion-panel-header>
+                   <div class="panel6">
+                       <div class="row">
+                           <div class="col-12 text-left">
+                               <p class="description">
+                                   Estos datos son importantes para tener un contacto eficiente
+                                   con las organizaciones con las que trabajamos
+                               </p>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-sm-12 col-lg-5">
+                               <div class="descripcion-select">¿Qué materias legales considera usted que debe fortalecer su organización?*</div>
+                               <mat-form-field>
+                                   <mat-select [disabled]="!edicion" id="materias_legales" #materias_legales="ngModel" name="materias_legales" [(ngModel)]="clearing.materias_legales"  class="validate required" required>
+                                           <mat-option *ngFor="let legales of materiaslegales;" [value]="legales.id">
+                                               {{legales.nombre}}
+                                           </mat-option>
+                                   </mat-select>
+                                   <mat-error *ngIf="materias_legales.dirty || materias_legales.pristine || materias_legales.errors">
+                                       Este campo es <strong>requerido</strong>
+                                   </mat-error>
+                               </mat-form-field>
+                           </div>
+                           <div class="col-2"></div>
+                           <div class="col-sm-12 col-lg-5">
+                               <div class="descripcion-select">¿Por qué?*</div>
+                               <mat-form-field>
+                                   <input [disabled]="!edicion" type="text" matInput id="porque_quiere_fortalecer" #porque_quiere_fortalecer="ngModel" name="porque_quiere_fortalecer" [(ngModel)]="clearing.porque_quiere_fortalecer"  class="validate required" required>
+                                   <mat-error *ngIf="porque_quiere_fortalecer.dirty || porque_quiere_fortalecer.pristine || porque_quiere_fortalecer.errors">
+                                       Este campo es <strong>requerido</strong>
+                                   </mat-error>
+                               </mat-form-field>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-sm-12 col-lg-5">
+                               <div class="descripcion-select">¿Cuenta con aviso de privacidad?*</div>
+                               <Aviso de privacidad : {{clearing.cuenta_aviso_privacidad }}></Aviso>
+                               <mat-form-field>
+                                   <mat-select [disabled]="!edicion" id="cuenta_aviso_privacidad" #cuenta_aviso_privacidad="ngModel" name="cuenta_aviso_privacidad" [(ngModel)]="clearing.cuenta_aviso_privacidad"  class="validate required" required>
+                                       <mat-option value="1" >Si</mat-option>
+                                       <mat-option value="0">No</mat-option>
+                                   </mat-select>
+                                   <mat-error *ngIf="cuenta_aviso_privacidad.dirty || cuenta_aviso_privacidad.pristine || cuenta_aviso_privacidad.errors">
+                                       Este campo es <strong>requerido</strong>
+                                   </mat-error>
+                               </mat-form-field>
+                           </div>
+                           <div class="col-2"></div>
+                           <div class="col-sm-12 col-lg-5">
+                               <div class="descripcion-select">¿Conoce las fechas y requisitos para la entrega de avisos de antilavado ante la autoridad?*</div>
+                               <mat-form-field>
+                                   <mat-select [disabled]="!edicion" id="sabe_fechas_avisos_antilavado" #sabe_fechas_avisos_antilavado="ngModel" name="sabe_fechas_avisos_antilavado" [(ngModel)]="clearing.sabe_fechas_avisos_antilavado"  class="validate required" required>
+                                       <mat-option value="1">Si</mat-option>
+                                       <mat-option value="0">No</mat-option>
+                                   </mat-select>
+                                   <mat-error *ngIf="sabe_fechas_avisos_antilavado.dirty || sabe_fechas_avisos_antilavado.pristine || sabe_fechas_avisos_antilavado.errors">
+                                       Este campo es <strong>requerido</strong>
+                                   </mat-error>
+                               </mat-form-field>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-sm-12 col-lg-5">
+                               <div class="descripcion-select">¿Sabe usted cuando se debe entregar la declaración anual?*</div>
+                               <mat-form-field>
+                                   <mat-select [disabled]="!edicion" id="sabe_fecha_entrega_declaracion_anual" #sabe_fecha_entrega_declaracion_anual="ngModel" name="sabe_fecha_entrega_declaracion_anual" [(ngModel)]="clearing.sabe_fecha_entrega_declaracion_anual"  class="validate required" required>
+                                       <mat-option value="1">Si</mat-option>
+                                       <mat-option value="0">No</mat-option>
+                                   </mat-select>
+                                   <mat-error *ngIf="sabe_fecha_entrega_declaracion_anual.dirty || sabe_fecha_entrega_declaracion_anual.pristine || sabe_fecha_entrega_declaracion_anual.errors">
+                                       Este campo es <strong>requerido</strong>
+                                   </mat-error>
+                               </mat-form-field>
+                           </div>
+                       </div>
+                   </div>
+               </mat-expansion-panel>
+           </mat-accordion> -->
+    <!-- Documentación -->
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row">
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Documentación</h4></span>
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel7">
+          <div class="row">
+            <div class="col-12 text-left">
+              <p class="description">
+                ¿Con cuáles documentos cuentan?*
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-sm-12">
+              <mat-checkbox [disabled]="!edicion" id="acta_constitutiva" #acta_constitutiva="ngModel" name="acta_constitutiva" [(ngModel)]="clearing.acta_constitutiva">Acta constitutiva</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12 check-largo">
+              <mat-checkbox [disabled]="!edicion" id="recibos_sat" #recibos_sat="ngModel" name="recibos_sat" [(ngModel)]="clearing.recibos_sat">Autorización para emitir recibos deducible por el SAT</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+              <mat-checkbox [disabled]="!edicion" id="cluni" #cluni="ngModel" name="cluni" [(ngModel)]="clearing.cluni">CLUNI</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12 mt-3">
+              <mat-checkbox [disabled]="!edicion" id="relatorio_anual" #relatorio_anual="ngModel" name="relatorio_anual" [(ngModel)]="clearing.relatorio_anual">Relatório anual de actividades</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12 mt-3">
+              <mat-checkbox [disabled]="!edicion" id="reporte_logros" #reporte_logros="ngModel" name="reporte_logros" [(ngModel)]="clearing.reporte_logros">Reporte de logos sobre proyectos</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12 mt-3">
+              <mat-checkbox [disabled]="!edicion" id="auditoria_anual" #auditoria_anual="ngModel" name="auditoria_anual" [(ngModel)]="clearing.auditoria_anual">Auditoría anual contable</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12 mt-3">
+              <mat-checkbox [disabled]="!edicion" id="RFC" #RFC="ngModel" name="RFC" [(ngModel)]="clearing.RFC">RFC</mat-checkbox>
+            </div>
+            <div class="col-lg-4 col-sm-12 mt-3">
+              <mat-checkbox [disabled]="!edicion" id="ninguno" #ninguno="ngModel" name="ninguno" [(ngModel)]="clearing.ninguno">No sé</mat-checkbox>
+            </div>
+            <p class="description">
+              Para brindar una mejor asesoría, les solicitamos adjuntar estatutos y
+              CV de los dirigentes (Presidente, Director, etc.) de la organización.
+            </p>
+          </div>
+          <div class="row" *ngIf="clearing.estado_clearing <= 2 || clearing.estado_clearing == null">
+            <div class="col-12 text-right">
+              <!-- <button class="btn btn-success boton-verde" mat-button >Subir documentos</button> -->
+              <!-- <input id="fileInput" [hidden]="true" name="file" type="file" class="btn btn-success boton-verde">
+              <button id="uploadButton" class="btn btn-success boton-verde"> Choose Files </button>  -->
+              <!-- <input type="file" name="myfile" multiple/> -->
+              <!-- <div class="upload-btn-wrapper"> -->
+              <!-- <button class="btn btn-success boton-verde" >Subir documentos</button> -->
+              <input type="file" class="btn btn-success boton-verde" name="myfile" (change)="fileChangeEvent($event)" multiple />
+              <!-- </div> -->
+              <style>
+
+                .upload-btn-wrapper {
+                  position: relative;
+                  /* overflow: hidden; */
+                  display: inline-block;
+                }
+
+                  .upload-btn-wrapper input[type=file] {
+                    font-size: 100px;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    opacity: 0;
+                  }
+              </style>
+            </div>
+          </div>
+          <!-- Lista de documentos -->
+          <div class="row" *ngIf="clearing.estado_clearing == 2">
+            <div class="col-12">
+              <table>
+                <tr>
+                  <td>Documento 1</td>
+                </tr>
+                <tr>
+                  <td>Documento 2</td>
+                </tr>
+                <tr>
+                  <td>Documento 3</td>
+                </tr>
+                <tr>
+                  <td>Documento 4</td>
+                </tr>
+                <tr>
+                  <td>Documento 4</td>
+                </tr>
+                <tr>
+                  <td>Documento 5</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="row" *ngIf="clearing.estado_clearing == 2">
+            <div class="col-12 text-right">
+              <button *ngIf="clearing.estado_clearing == 2" class="btn btn-success boton-verde" mat-button>Guardar</button>
+            </div>
+          </div>
+          <div class="row" *ngIf="clearing.estado_clearing >= 3">
+            <div class="col-12">
+              <ul>
+                <li>Documento 1</li>
+                <li>Documento 2</li>
+                <li>Documento 3</li>
+                <li>Documento 4</li>
+                <li>Documento 5</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- Comentarios -->
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row">
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Comentarios</h4></span>
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel8">
+          <div class="row">
+            <div class="col-sm-12 col-lg-5">
+              <mat-form-field>
+                <mat-select [disabled]="!edicion" placeholder="¿Cómo conoció la Red Pro Bono México?"
+                            id="conocimiento_redprobono_mexico" #conocimiento_redprobono_mexico="ngModel"
+                            name="conocimiento_redprobono_mexico" [(ngModel)]="clearing.conocimiento_redprobono_mexico"
+                            class="validate required" required>
+                  <mat-option *ngFor="let conocimiento of conocimientosprobono;" [value]="conocimiento.id">
+                    {{conocimiento.nombre}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="conocimiento_redprobono_mexico.dirty || conocimiento_redprobono_mexico.pristine || conocimiento_redprobono_mexico.errors">
+                  Este campo es <strong>requerido</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-lg-7"></div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field class="example-full-width">
+                <textarea [disabled]="!edicion" matInput
+                          placeholder="Comentarios adicionales"
+                          id="comentarios_adicionales" #comentarios_adicionales="ngModel" name="comentarios_adicionales" [(ngModel)]="clearing.comentarios_adicionales"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-lg-12">
+              <div class="descripcion-contenedor-3">
+                Al aceptar la siguiente casilla se compromete a notificar cualquier cambio en la información brindada en este formulario. Así como a notificar de cualquier desarrollo de su caso y a tomar un papel activo en su relación con la Red Pro Bono México.*
+              </div>
+              <mat-radio-group [disabled]="!edicion" id="acuerdo_entrega_docs" name="acuerdo_entrega_docs" #acuerdo_entrega_docs="ngModel" [(ngModel)]="clearing.acuerdo_entrega_docs">
+                <mat-radio-button value="1">Si</mat-radio-button>
+                <mat-radio-button value="0">No</mat-radio-button>
+              </mat-radio-group>
+              <br>
+            </div>
+            <div class="col-sm-12 col-lg-5">
+              <div class="descripcion-contenedor-3">
+                <mat-form-field>
+                  <input [disabled]="!edicion" matInput [matDatepicker]="ultimo_cambio" placeholder="¿Cuándo se realizó el último cambio de estatutos?" id="ultimo_cambio" #ultimo_cambio="ngModel" name="ultimo_cambio" [(ngModel)]="clearing.ultimo_cambio">
+                  <mat-datepicker-toggle matSuffix [for]="ultimo_cambio"></mat-datepicker-toggle>
+                  <mat-datepicker #ultimo_cambio></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field>
+                  <input [disabled]="!edicion" matInput placeholder="¿En qué consistió el cambio de estatutos?" id="cambio_estatuto" #cambio_estatuto="ngModel" name="cambio_estatuto" [(ngModel)]="clearing.cambio_estatuto">
+                  <!-- <mat-error *ngIf="director_organizacion.dirty || director_organizacion.pristine || director_organizacion.errors">
+                      El dato es <strong>requerido</strong>
+                  </mat-error>  -->
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- Asignar caso a entidad probono -->
+    <form #AsignarCaso="ngForm" id="form-caso">
+      <mat-accordion *ngIf="clearing.estado_clearing >= 3">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="row">
+                <div class="col-12 text-left">
+                  <span *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing != 6"> <h4 class="textos-verdes titulo-medio md-5">Asignar caso a entidad probono</h4></span>
+                  <span *ngIf="clearing.estado_clearing == 6"> <h4 class="textos-verdes titulo-medio md-5">Entidad Pro Bono</h4></span>
+                  <hr class="linea-texto-inferior" align="left">
+                </div>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel8">
+            <div class="row">
+              <div class="col-sm-12 col-lg-6">
+                <mat-form-field *ngIf="clearing.estado_clearing == 3">
+                  <mat-select placeholder="Seleccione la entidad Pro Bono a la que se asigna el caso"
+                              id="entidad_probono" #entidad_probono="ngModel"
+                              name="entidad_probono" [(ngModel)]="clearing.entidad_probono"
+                              class="validate required" required>
+                    <mat-option *ngFor="let entidad of entidadesProbono;" [value]="entidad.id">
+                      {{entidad.nombre}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="entidad_probono.dirty || entidad_probono.pristine || entidad_probono.errors">
+                    Este campo es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field *ngIf="clearing.estado_clearing > 3">
+                  <mat-select placeholder="Seleccione la entidad Pro Bono a la que se asigna el caso"
+                              id="entidad_probono" disabled="true" *ngIf="clearing.estado_clearing != 3" #entidad_probono="ngModel" name="entidad_probono" [(ngModel)]="clearing.entidad_probono">
+                    <mat-option *ngFor="let entidad of entidadesProbono;" [value]="entidad.id">
+                      {{entidad.nombre}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-lg-6 text-right" *ngIf="clearing.estado_clearing == 3">
+                <button class="btn btn-success boton-verde" mat-button>Subir contrato</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <mat-form-field class="example-full-width">
+                  <textarea *ngIf="clearing.estado_clearing == 3" matInput placeholder="Comentarios adicionales" id="comentarios_entidad" #comentarios_entidad="ngModel" name="comentarios_entidad" [(ngModel)]="clearing.comentarios_entidad" class="validate"></textarea>
+                  <textarea disabled="true" *ngIf="clearing.estado_clearing != 3" matInput placeholder="Comentarios adicionales" id="comentarios_entidad" #comentarios_entidad="ngModel" name="comentarios_entidad" [(ngModel)]="clearing.comentarios_entidad" class="validate"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row" *ngIf="clearing.estado_clearing == 3">
+              <div class="col-12 text-right">
+                <button class="btn btn-success boton-verde" (click)="AsignarCaso.valid ? asignarCaso() : validaciones(AsignarCaso._directives)" mat-button>Guardar</button>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </form>
+    <!-- Subestado del proceso -->
+    <form #Subestado="ngForm" id="form-subestado">
+      <mat-accordion *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing != 6">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="row">
+                <div class="col-12 text-left">
+                  <span> <h4 class="textos-verdes titulo-medio md-5">Sub-estado del proceso</h4></span>
+                  <hr class="linea-texto-inferior" align="left">
+                </div>
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel8">
+            <div class="row">
+              <div class="col-12 text-left">
+                <p class="description">
+                  Favor de especificar el sub-estado para poder continuar*
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 col-lg-5">
+                <mat-form-field *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing < 6">
+                  <mat-select placeholder="Sub-estado"
+                              id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing"
+                              [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
+                    <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
+                      {{sub.nombre}}
+                    </mat-option>
+                  </mat-select>
+                  <!-- <mat-select placeholder="Sub-estado" disabled="true"
+                  id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing"
+                  [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
+                      <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
+                          {{sub.nombre}}
+                      </mat-option>
+                  </mat-select> -->
+                  <mat-error *ngIf="subestado_clearing.dirty || subestado_clearing.pristine || subestado_clearing.errors">
+                    El subestado es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+                <mat-form-field *ngIf="clearing.estado_clearing >= 6">
+                  <mat-select placeholder="Sub-estado" disabled="true"
+                              id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing"
+                              [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
+                    <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
+                      {{sub.nombre}}
+                    </mat-option>
+                  </mat-select>
+                  <!-- <mat-select placeholder="Sub-estado" disabled="true"
+                  id="subestado_clearing" #subestado_clearing="ngModel" name="subestado_clearing"
+                  [(ngModel)]="clearing.subestado_clearing" class="validate required" required>
+                      <mat-option *ngFor="let sub of subestados;" [value]="sub.id">
+                          {{sub.nombre}}
+                      </mat-option>
+                  </mat-select> -->
+                  <mat-error *ngIf="subestado_clearing.dirty || subestado_clearing.pristine || subestado_clearing.errors">
+                    El subestado es <strong>requerido</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-12 col-lg-7">
+                <button *ngIf="clearing.estado_clearing >= 3 && clearing.estado_clearing < 6"
+                        class="btn btn-success boton-verde" mat-button
+                        (click)="Subestado.valid ? guardarSubEstado(this.clearing.subestado_clearing) : validaciones(Subestado._directives)">
+                  Guardar subestado
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </form>
+
+    <!-- Informe y bitácora del caso -->
+    <mat-accordion *ngIf="clearing.estado_clearing == 6">
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <div class="row">
+              <div class="col-12 text-left">
+                <span> <h4 class="textos-verdes titulo-medio md-5">Informe</h4></span>
+                <hr class="linea-texto-inferior" align="left">
+              </div>
+            </div>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="panel8">
+          <div class="row">
+            <div class="col-sm-12 col-lg-6">
+              <mat-form-field>
+                <input type="text" [disabled]="!edicion" matInput placeholder="Entidad Pro Bono a cargo del caso" id="nombre_osc" #nombre_osc="ngModel" name="nombre_osc" [(ngModel)]="clearing.nombre_osc" class="validate required" required>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-12 col-lg-6 text-right">
+              <mat-form-field>
+                <input type="text" [disabled]="!edicion" matInput placeholder="Nombre de la Organización" id="nombre_osc" #nombre_osc="ngModel" name="nombre_osc" [(ngModel)]="clearing.nombre_osc" class="validate required" required>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p class="description text-justify">Notas</p>
+              <p class="description">
+                Lorem ipsum dolor sit amet, ut nobis splendide scripserit pro. Ferri electram in usu. Summo detracto signiferumque eos id, eros periculis ne sea. Ius case equidem iracundia no, eum iusto libris doming ne, vix an utamur reformidans efficiantur. Ea docendi principes reprimique eam. At tation antiopam electram his, ferri maiorum euripidis sed an.
+              </p>
+              <p class="description text-justify">
+                Ea vero aliquid mea. Vim timeam habemus platonem cu, doctus consequuntur ex nec, ea sea augue aeque eleifend. Adversarium ullamcorper vix cu, et possit corrumpit repudiare per, case ubique vis cu. Aliquip ornatus pri cu, vis ceteros mnesarchum ex, at qualisque disputando has. Vocent debitis dissentias vis ea, cu nihil platonem prodesset vis, libris blandit ponderum ex eos. Usu delenit scripserit temporibus ex, hinc albucius suavitate vix in.
+              </p>
+            </div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <!-- Enviar formularios -->
+    <div class="botones md-50 mt-50">
+      <div class="row">
+        <!-- Regresa a listado de todas las solicitudes -->
+        <div class="col-lg-4 col-sm-12 text-left">
+          <a routerLink="/solicitudes">
+            <button *ngIf="clearing.estado_clearing != null && clearing.estado_clearing != 1"
+                    class="btn btn-danger boton-marron" mat-button>
+              <i class="fa fa-angle-left"></i>
+              <i class="fa fa-angle-left"></i>
+              Atrás
+            </button>
+          </a>
+        </div>
+        <div class="col-lg-8 col-sm-12 text-right">
+          <!-- Boton para Abandonar el caso -->
+          <button *ngIf="clearing.estado_clearing != null && clearing.estado_clearing != 1 && clearing.estado_clearing != 6 && clearing.estado_clearing != 7"
+                  class="btn btn-danger boton-rojo" mat-button
+                  (click)="abandonarCaso()">
+            Abandonar
+          </button>
+          <!-- Abre link de bitácora -->
+          <button *ngIf="clearing.estado_clearing == 4 || clearing.estado_clearing == 5"
+                  class="btn btn-success boton-verde" mat-button>
+            Seguimiento
+          </button>
+          <!-- Botón de envio de formulario por primera vez -->
+          <button *ngIf="clearing.estado_clearing == '' || clearing.estado_clearing == null"
+                  class="btn btn-success boton-verde"
+                  (click)="formClearing.valid ? enviarSolicitud() : validaciones(formClearing._directives)" mat-button>
+            Enviar
+          </button>
+          <!-- <button *ngIf="clearing.estado_clearing == '' || clearing.estado_clearing == null"
+              class="btn btn-success boton-verde"
+              (click)="enviarSolicitud()" mat-button>
+              Enviar
+          </button> -->
+          <!-- Guardar y actualizar formulario -->
+          <button *ngIf="clearing.estado_clearing == 1"
+                  class="btn btn-success boton-verde" mat-button
+                  (click)="formClearing.valid ? actualizarSolicitud() : validaciones(formClearing._directives)" mat-button>
+            Guardar
+          </button>
+          <!-- Imprimir todo el clearing -->
+          <button *ngIf="clearing.estado_clearing != null && clearing.estado_clearing != 6"
+                  class="btn btn-default boton-gris" (click)="imprimirPDF()" mat-button>
+            Imprimir
+          </button>
+          <!-- Actualiza status a Comprobado -->
+          <button *ngIf="clearing.estado_clearing == 1"
+                  class="btn btn-primary boton-azul" mat-button
+                  (click)="finalizarRevision()">
+            Finalizar Revisión
+          </button>
+          <!-- Actualiza status a En Clearing -->
+          <button *ngIf="clearing.estado_clearing == 2"
+                  class="btn btn-success boton-verde-seco" mat-button
+                  style="width: 198px !important;"
+                  (click)="finalizarComprobacion()">
+            Finalizar Comprobación
+          </button>
+          <!-- Actualiza status a Asignada -->
+          <button *ngIf="clearing.estado_clearing == 3"
+                  class="btn btn-success boton-verde-seco" mat-button
+                  (click)="AsignarCaso.valid && Subestado.valid ? finalizarClearing() : validaciones(AsignarCaso._directives && Subestado._directives)">
+            Finalizar Clearing
+          </button>
+          <!-- Actualiza status a Cerrado -->
+          <button *ngIf="clearing.estado_clearing == 4"
+                  class="btn btn-default boton-amarillo" mat-button
+                  (click)="finalizarAsignacion()">
+            Finalizar Asignada
+          </button>
+          <!-- Actualiza status a Finalizada -->
+          <button *ngIf="clearing.estado_clearing == 5"
+                  class="btn btn-default boton-amarillo" mat-button
+                  (click)="finalizarCerrada()">
+            Finalizar Cerrada
+          </button>
+          <!-- Guarda el caso en expediente-->
+          <button *ngIf="clearing.estado_clearing == 6"
+                  class="btn btn-default boton-gris" mat-button
+                  (click)="imprimirPDF()">
+            Guardar caso
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <ol>
+    <li>
+      <button mat-raised-button (click)="openDialog()">Pick one</button>
+    </li>
+    <li *ngIf="animal">
+      You chose: <i>{{animal}}</i>
+    </li>
+  </ol>
 </div>
+
