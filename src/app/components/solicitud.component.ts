@@ -1,9 +1,12 @@
 import { Component} from '@angular/core';
 import { DatosService } from '../services/datos.service';
 import { Clearing } from '../models/clearing';
+import { IdApplicationNavigation, CompanyOsc, CompanyComment, CompanyContacto, CompanyDetail } from '../models/solicitud';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import * as jquery from 'jquery';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+/* import { ConsoleReporter } from 'jasmine'; */
 
 
 @Component({
@@ -17,11 +20,17 @@ export class SolicitudComponent {
     public mask_comienzo = [/\d/, /\d/, /\d/, /\d/];
     public titulo: string;
     public clearing = new Clearing();
+    public IdApplicationNavigation = new IdApplicationNavigation();
+    public CompanyOsc = new CompanyOsc();
+    public CompanyComment = new CompanyComment();
+    public CompanyContacto = new CompanyContacto();
+    public CompanyDetail = new CompanyDetail();
     public respuesta =  Clearing;
-    public pais;
     public mensaje;
     public paises: any = [];
+    public estados: any =[];
     public ciudades: any = [];
+    public conocidos: any = [];
     public localidades: any = [];
     public materiasenfoque: any = [];
     public comunidades: any = [];
@@ -53,19 +62,20 @@ export class SolicitudComponent {
         this.clearing.miembro_red_probono = "0";
         this.clearing.tiene_discriminacion = "0";
         this.getPaises();
-        this.getCiudades();
         this.getLocalidades();
-        this.getMateriasEnfoque();
+        this.getConocido();
+
         this.getCominidades();
         this.getMateriasLegales();
         this.getConocimientoProbono();
       }
+
+
       //Catalogos
       getPaises() {
         this._datosService.getPaises().subscribe( 
           result => {
                 this.paises = result;
-                // console.log(result);
             },
             error => {
             var errorMessage = <any>error;
@@ -73,15 +83,27 @@ export class SolicitudComponent {
             }
         );
       }
-      selectEstado(): void {
-        console.log(this.clearing.pais_osc);
+      
+      getEstados() {
+        console.log(this.IdApplicationNavigation.CompanyOsc.idcountry);
+        this._datosService.getEstados('/state', {'id_country':this.IdApplicationNavigation.CompanyOsc.idcountry}).subscribe(
+          result => {
+            this.estados = result;
+            console.log(this.estados)
+          },
+          error => {
+            var errorMessage = <any>error;
+            console.log(errorMessage);
+          }
+        );
       }
       
       getCiudades() {
-        this._datosService.getCiudades().subscribe( 
+        console.log(this.IdApplicationNavigation.CompanyOsc.idcountry + "-----" + this.IdApplicationNavigation.CompanyOsc.idstate);
+        this._datosService.getCiudades('/city', {'id_country':this.IdApplicationNavigation.CompanyOsc.idcountry, 'id_state':this.IdApplicationNavigation.CompanyOsc.idstate}).subscribe(
           result => {
                 this.ciudades = result;
-                // console.log(result);
+                console.log(this.ciudades);
             },
             error => {
             var errorMessage = <any>error;
@@ -103,7 +125,19 @@ export class SolicitudComponent {
         );
       }
 
-      getMateriasEnfoque() {
+      getConocido(){
+        this._datosService.getConocidos().subscribe(
+          result => {
+            this.conocidos = result;
+          },
+          error => {
+            var errorMessage = <any>error;
+            console.log(errorMessage);
+          }
+        )
+      }
+
+     /*  getMateriasEnfoque() {
         this._datosService.getMateriasEnfoque().subscribe( 
           result => {
                 this.materiasenfoque = result;
@@ -115,7 +149,7 @@ export class SolicitudComponent {
             }
         );
       }
-
+ */
       getCominidades() {
         this._datosService.getComunidades().subscribe( 
           result => {
@@ -160,24 +194,25 @@ export class SolicitudComponent {
         this.filesToUpload = <Array<File>>fileInput.target.files; //Recoge nuestro fichero y lo pone en un array
         console.log(this.filesToUpload);
       }
+      
       //Formulario solicitud 
       enviarSolicitud() {
-          this.clearing.estado_clearing = 1;
+          /* this.clearing.estado_clearing = 1;
           this.clearing.subestado_clearing = null;
-          this.clearing.entidad_probono = null;
+          this.clearing.entidad_probono = null; */
           // console.log(this.clearing);
-          this._datosService.clearing(this.clearing)
-              .subscribe((value) => {
-                // console.log(value);
-                this.clearing = value.clearing;
-                console.log(this.clearing);
+          console.log(this.IdApplicationNavigation);
+          this._datosService.clearing('/clearing', this.IdApplicationNavigation )
+              .subscribe( response => {
+                debugger;
+                console.log(response)
                 // console.log("Aqui esta el id"+this.clearing.id);
-                this.mensaje = 'Su solicitud fue enviada con éxito';
+               /*  this.mensaje =  //'Su solicitud fue enviada con éxito';
                 this.snackBar.open(this.mensaje, "", {
                   duration: 5000,
                   verticalPosition: 'bottom',
                   horizontalPosition: 'right'
-                  });
+                  }); */
               // this._router.navigate(['/solicitudes']);
           }, 
           (error) => {

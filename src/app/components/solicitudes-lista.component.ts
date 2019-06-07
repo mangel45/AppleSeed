@@ -128,7 +128,7 @@ borrarFiltros(){
 
     //Obtiene todos los estados
     getEstadosSolicitud(){
-      this._datosService.getEstadosSolicitud().subscribe( 
+      this._datosService.getEstadosSolicitud().subscribe(
         (result:any) => {
               this.estados_sol = result;
               console.log(this.estados_sol);
@@ -142,7 +142,7 @@ borrarFiltros(){
     //Obtiene todos los subestados
     getSubestadosSolicitud() {
       console.log(this.busquedaModel.clearing_Status);
-      this._datosService.getSubestados('catalogs/Clearing_Sub_Status', { 'clearing_status': this.busquedaModel.clearing_Status }).subscribe ( 
+      this._datosService.getSubestados('catalogs/Clearing_Sub_Status', { 'clearing_status': this.busquedaModel.clearing_Status }).subscribe (
         (result) => {
               this.subestados = result;
               console.log(result);

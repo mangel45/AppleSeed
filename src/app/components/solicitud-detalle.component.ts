@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef} from '@angular/core';
 import { DatosService } from '../services/datos.service';
 import { Clearing } from '../models/clearing';
+import { CompanyOsc } from '../models/solicitud'
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import * as jquery from 'jquery';
@@ -28,6 +29,7 @@ import html2canvas from 'html2canvas';
     public comunidades: any = [];
     public materiaslegales: any = [];
     public conocimientosprobono: any = [];
+    public CompanyOsc = new CompanyOsc();
 
     public edicion: boolean;
     public subestados;
@@ -47,7 +49,7 @@ import html2canvas from 'html2canvas';
         this.getPaises();
         this.getCiudades();
         this.getLocalidades();
-        this.getMateriasEnfoque();
+        /* this.getMateriasEnfoque(); */
         this.getCominidades();
         this.getMateriasLegales();
         this.getConocimientoProbono();
@@ -63,7 +65,7 @@ import html2canvas from 'html2canvas';
         this._datosService.getSolicitud(this.id).subscribe(
             response => {
                 this.clearing = response;
-                this.getFiltroSubestados(this.clearing.estado_clearing);
+                /* this.getFiltroSubestados(this.clearing.estado_clearing); */
             },
             error => {
                 console.log(<any>error);
@@ -349,7 +351,7 @@ import html2canvas from 'html2canvas';
       }
       
       getCiudades() {
-        this._datosService.getCiudades().subscribe( 
+        this._datosService.getCiudades('/city', {'id_country':this.CompanyOsc.idcountry, 'id_state':this.CompanyOsc.idstate}).subscribe( 
           result => {
                 this.ciudades = result;
                 // console.log(result);
@@ -374,7 +376,7 @@ import html2canvas from 'html2canvas';
         );
       }
 
-      getMateriasEnfoque() {
+      /* getMateriasEnfoque() {
         this._datosService.getMateriasEnfoque().subscribe( 
           result => {
                 this.materiasenfoque = result;
@@ -385,7 +387,7 @@ import html2canvas from 'html2canvas';
             console.log(errorMessage);
             }
         );
-      }
+      } */
 
       getCominidades() {
         this._datosService.getComunidades().subscribe( 
@@ -426,7 +428,7 @@ import html2canvas from 'html2canvas';
         );
       }
 
-      getFiltroSubestados(id) {
+     /*  getFiltroSubestados(id) {
         console.log(this.clearing);
         this._datosService.getFiltroSubestados(id).subscribe( 
           result => {
@@ -438,7 +440,7 @@ import html2canvas from 'html2canvas';
             console.log(errorMessage);
             }
         );
-      }
+      } */
 
       getEntidadesProbono() {
         this._datosService.getEntidadesProbono().subscribe( 

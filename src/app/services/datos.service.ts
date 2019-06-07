@@ -5,6 +5,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from './globals';
 import { Clearing } from '../models/clearing';
+import { IdApplicationNavigation, CompanyOsc, CompanyComment, CompanyContacto, CompanyDetail } from '../models/solicitud';
 import {map} from 'rxjs/operators'; 
 import { AuthService } from './auth.service';
 
@@ -81,12 +82,19 @@ export class DatosService {
     // clearing(parametros) {
     //     return this.http.post(this.url + 'clearing/', parametros);
     // }
-    clearing(clearing : Clearing) {
-        let json = JSON.stringify(clearing);
-        let parametros = json;
-        let headers = new Headers({'Content-Type':'application/json'});
-         return this._http.post(this.url + 'clearing/', parametros, {headers : headers})
-         .pipe(map(res => res.json()));
+    clearing(url, parametros) { //solicitud : IdApplicationNavigation
+        /* let json = JSON.stringify(solicitud);
+        console.log(solicitud);
+        debugger;
+        let parametros = json; */
+        /* let headers = new Headers({'Content-Type':'application/json'}); */
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem("token"));
+        debugger;
+        console.log(parametros);
+         return this.http.post('http://23.253.173.64:8081/api/' + url, parametros,  {headers: headers});
+         //.pipe(map(res => res.json()));
     }
     //Actualizar el formulario
     actualizarFormulario(id, parametros) {
@@ -111,16 +119,27 @@ export class DatosService {
 
     //Catalogos
     getPaises() {
-        return this.http.get(this.url + 'catalogos/country/', this._authServices.authHttpOptions());
+        return this.http.get('http://23.253.173.64:8081/api/catalogs/country', this._authServices.authHttpOptions());
     }
-    getCiudades() {
-        return this.http.get(this.url + 'catalogs/city?id_country=1&id_state=1', this._authServices.authHttpOptions());
+    getEstados(url, parametros) {
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem("token"));
+        return this.http.get('http://23.253.173.64:8081/api/catalogs' + url, { headers: headers, params: parametros });
     }
+    getCiudades(url, parametros) {
+        let headers = new HttpHeaders();
+        headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+        headers = headers.set('Authorization', 'Bearer ' + localStorage.getItem("token"));
+        return this.http.get('http://23.253.173.64:8081/api/catalogs/' + url ,{ headers: headers, params: parametros });
+    }
+
+    getConocidos(){
+        return this.http.get('http://23.253.173.64:8081/api/catalogs/how_did_you', this._authServices.authHttpOptions());
+    }
+
     getLocalidades() {
         return this.http.get(this.url + 'catalogos/localidades/', this._authServices.authHttpOptions());
-    }
-    getMateriasEnfoque() {
-        return this.http.get(this.url + 'catalogos/materias-enfoque/', this._authServices.authHttpOptions());
     }
     getComunidades() {
         return this.http.get(this.url + 'catalogos/comunidades/', this._authServices.authHttpOptions());
@@ -154,9 +173,6 @@ export class DatosService {
         return this.http.get('http://23.253.173.64:8081/api/clearing/Search/', this._authServices.authHttpOptionsParams(parametros));
     }
 
-     getEstados() {
-        return this.http.get(this.url + 'catalogos/estados/', this._authServices.authHttpOptions());
-    }
     getEntidadesProbono() {
         return this.http.get(this.url + 'catalogos/entidades/', this._authServices.authHttpOptions());
     }
