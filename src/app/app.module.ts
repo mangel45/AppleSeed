@@ -30,12 +30,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatSelectModule} from '@angular/material/select';
 //Radio Button
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
 //Extras de Angular Material y Transacciones
 import {MatExpansionModule} from '@angular/material/expansion';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import 'hammerjs';
 //Mensajes
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 //Servicio
 import { DatosService } from './services/datos.service';
 import { AuthService } from './services/auth.service';
@@ -52,9 +54,8 @@ import { MiCuentaComponent } from './components/micuenta.component';
 import { RegistroComponent } from './components/registro.component';
 import { SolicitudComponent } from './components/solicitud.component';
 import { SolicitudesListaComponent } from './components/solicitudes-lista.component';
-import { RevSolicitudComponent } from './components/solicitud-detalle.component';
+import { RevSolicitudComponent, DialogInforme } from './components/solicitud-detalle.component';
 import { EstadisticasComponent } from './components/estadisticas.component';
-
 //Componente de error general
 import { ErrorComponent } from './components/error.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -75,7 +76,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     EstadisticasComponent,
     ErrorComponent,
     HeaderComponent,
-    
+    DialogInforme
+  ],
+  entryComponents: [
+    DialogInforme
   ],
   imports: [
     FormsModule,
@@ -94,12 +98,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
     MatCheckboxModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatDividerModule,
     MatPaginatorModule, 
     MatSortModule,
     ReactiveFormsModule,
     MatTableModule,
     MatNativeDateModule, 
     MatSliderModule,
+    MatDialogModule,
     routing,
     NgbModule.forRoot()
   ],
